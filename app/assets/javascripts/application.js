@@ -6,4 +6,24 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
+//= require jss
 //= require_tree .
+
+$(document).ready(function() {
+  $("#slider_width").slider({
+    range: "min",
+    min: 50,
+    max: 100,
+    value: 80,
+    slide: function(event, ui) {
+        $("#value_width").html(ui.value);
+        //alert($("#box").css("color"));
+//        $("#box:before").css('borderTopLeftRadius', ui.value + "px");
+        //document.getElementById('box').style.width = ui.value + "%";
+        jss('#box:before', {
+            width: ui.value + '%'
+        });
+      }
+  });
+});
