@@ -1,0 +1,25 @@
+%section#setup
+  %div{id: "setup_type", class: "setup_box"}
+    %h2 Type
+    %select
+      %option{value: "curved_hz"} Horizontal curve
+      %option{value: "curved_vt"} Vertical curve
+  %div{id: "setup_subtype", class: "setup_box"}
+    %h2 Subtype
+    .content
+      %input{type:"radio", name:"subtype", value:"top_bottom", checked: true} Top and bottom
+      %br/
+      %input{type:"radio", name:"subtype", value:"top"} Top
+      %br/
+      %input{type:"radio", name:"subtype", value:"bottom"} Bottom
+      %br/
+  %div{id:"setup_shadow", class:"setup_box"}
+    %h2
+      Width
+      %span#value_width 80
+      \%
+    #slider_width
+
+%section#box_outer
+  #box
+    azerty

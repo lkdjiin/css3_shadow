@@ -1,11 +1,9 @@
 !!! 5
-%html{ lang: "en"}
+%html{ lang: "en" }
   %head
     %title= @title
-    = stylesheet_link_tag    "application"
-    %link{href:"http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css", type:"text/css", rel:"stylesheet"}
-    %link{href:"http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css", type:"text/css", rel:"stylesheet"}
-    = javascript_include_tag "application"
+    %meta{ charset: "UTF-8" }
+    = render "layouts/scripts"
     = csrf_meta_tags
 
   %body
@@ -14,31 +12,5 @@
         %h1 CSS3 Drop Shadows
 
     %div{id: "main_content", class: "application_centered"}
-      
-      %section#setup
-        %div{id: "setup_type", class: "setup_box"}
-          %h2 Type
-          %select
-            %option{value: "curved_hz"} Horizontal curve
-            %option{value: "curved_vt"} Vertical curve
-        %div{id: "setup_subtype", class: "setup_box"}
-          %h2 Subtype
-          .content
-            %input{type:"radio", name:"subtype", value:"top_bottom", checked: true} Top and bottom
-            %br/
-            %input{type:"radio", name:"subtype", value:"top"} Top
-            %br/
-            %input{type:"radio", name:"subtype", value:"bottom"} Bottom
-            %br/
-        %div{id:"setup_shadow", class:"setup_box"}
-          %h2
-            Width
-            %span#value_width 80
-            \%
-          #slider_width
-      
-      %section#box_outer
-        #box
-          azerty
-    = yield
+      = yield
 

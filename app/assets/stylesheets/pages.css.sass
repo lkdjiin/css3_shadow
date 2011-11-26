@@ -1,0 +1,96 @@
+// VARIABLES
+//------------------------------------------------------------------------------
+
+$front-color: #484040
+$header-height: 80px
+$section-setup-size: 600px
+
+// GENERAL
+//------------------------------------------------------------------------------
+
+body
+  font-family: Arial, "MS Trebuchet", sans-serif
+  color: $front-color
+  
+h1
+  color: white
+  line-height: $header-height
+  margin-left: 10px
+  font-size: 30px
+
+header
+  background-color: $front-color
+  height: $header-height
+
+
+// SHARED
+//------------------------------------------------------------------------------
+
+.application_centered
+  margin: 0 20px
+
+.setup_box 
+  //max-width: 300px
+  //min-height: 80px
+  border: 1px solid #ccc
+  margin: 5px
+  padding: 5px
+  display: inline-block
+
+// SETUP BOXES
+//------------------------------------------------------------------------------
+
+section#setup
+  float: left
+  width: $section-setup-size
+
+#setup_type
+  width: 270px
+
+#setup_subtype
+  width: 270px
+  
+#setup_shadow
+  width: 570px
+
+
+// THE BOX
+//------------------------------------------------------------------------------
+
+#box_outer
+  border: 1px solid #ccc
+  padding: 100px
+  background-color: #ccc
+  position: relative
+  z-index: -99
+  margin-left: $section-setup-size
+
+#box 
+  width: 400px
+  height: 300px
+  margin: 0 auto
+  border-radius: 5px
+  position: relative
+  background-color: #fff
+
+#box:before, #box:after
+  -webkit-box-shadow: 0 15px 10px rgba(0,0,0,0.5)
+  -moz-box-shadow: 0 15px 10px rgba(0,0,0,0.5)
+  box-shadow: 0 15px 10px rgba(0,0,0,0.5)
+  position: absolute
+  border-radius: 50%
+  left: 0
+  bottom: 0
+  z-index: -1
+  width: 100%
+  max-width: 431px
+  height: 20%
+  content: ""
+
+#box:before
+  -webkit-box-shadow: 0 -15px 10px rgba(0,0,0,0.5)
+  -moz-box-shadow: 0 -15px 10px rgba(0,0,0,0.5)
+  box-shadow: 0 -15px 10px rgba(0,0,0,0.5)
+  bottom: auto
+  top: 0
+
