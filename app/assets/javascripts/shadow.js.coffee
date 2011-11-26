@@ -1,16 +1,20 @@
-class Shadow
+class window.Shadow
+
   width_changed: (width) ->
     $("#value_width").html(width)
-    jss('#box:before', {
-        width: width + '%'
-    });
+    left = (100 - width) / 2
+    jss '#box:before, #box:after',
+      width: width + '%'
+      left: left + '%'
+      
+  height_changed: (height) ->
+    $("#value_height").html(height)
+    jss '#box:before, #box:after',
+      height: height + '%'
   
-$(document).ready ->
-  window.shadow = new Shadow()
-  $("#slider_width").slider
-    range: "min"
-    min: 50
-    max: 100
-    value: 80
-    slide: (event, ui) ->
-      window.shadow.width_changed(ui.value)
+  radius_changed: (value) ->
+    $("#value_radius").html(value)
+    jss '#box:before, #box:after',
+      borderRadius: value + '%'
+  
+

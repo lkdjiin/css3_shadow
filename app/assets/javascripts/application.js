@@ -9,3 +9,4 @@
 //= require jquery-ui
 //= require jss
 //= require shadow
+//= require init
