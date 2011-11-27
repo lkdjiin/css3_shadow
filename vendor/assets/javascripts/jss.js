@@ -93,6 +93,7 @@ var jss = (function (undefined) {
             }
         } else {
             // Single sheet
+
             rules = sheet.cssRules || sheet.rules;
             for (i = 0; i < rules.length; i++) {
                 // Warning, selectorText may not be correct in IE<9

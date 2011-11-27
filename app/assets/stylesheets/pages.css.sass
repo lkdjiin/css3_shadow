@@ -73,7 +73,20 @@ section#setup
   position: relative
   background-color: #fff
 
-#box:before, #box:after
+#box:before
+  -webkit-box-shadow: 0 -15px 10px rgba(0,0,0,0.5)
+  -moz-box-shadow: 0 -15px 10px rgba(0,0,0,0.5)
+  box-shadow: 0 -15px 10px rgba(0,0,0,0.5)
+  position: absolute
+  border-radius: 50%
+  left: 10%
+  top: 0
+  z-index: -1
+  width: 80%
+  height: 20%
+  content: ""
+
+#box:after
   -webkit-box-shadow: 0 15px 10px rgba(0,0,0,0.5)
   -moz-box-shadow: 0 15px 10px rgba(0,0,0,0.5)
   box-shadow: 0 15px 10px rgba(0,0,0,0.5)
@@ -86,10 +99,8 @@ section#setup
   height: 20%
   content: ""
 
-#box:before
-  -webkit-box-shadow: 0 -15px 10px rgba(0,0,0,0.5)
-  -moz-box-shadow: 0 -15px 10px rgba(0,0,0,0.5)
-  box-shadow: 0 -15px 10px rgba(0,0,0,0.5)
-  bottom: auto
-  top: 0
+// THE CODE
+//------------------------------------------------------------------------------
 
+section#code
+  clear: both
