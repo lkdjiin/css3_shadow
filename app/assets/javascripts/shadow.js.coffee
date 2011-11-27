@@ -1,3 +1,4 @@
+################################################################################
 # The application main class, the one who is the 'façade'.
 # For now, it is the only public class.
 class window.ShadowMaker
@@ -46,6 +47,40 @@ class window.ShadowMaker
     jss '#box:after',
       bottom: value + '%'
   
+  # Callback, when the blur of the shadow color have changed.
+  #
+  # value - Integer.
+  blur_changed: (value) ->
+    @shadow.blur = value
+    $("#value_blur").html(value)
+    jss '#box:before',
+      boxShadow: @_color_for_before()
+    jss '#box:after',
+      boxShadow: @_color_for_after()
+  
+  # Callback, when the shift of the shadow color have changed.
+  #
+  # value - Integer.
+  shift_changed: (value) ->
+    @shadow.shift = value
+    $("#value_shift").html(value)
+    jss '#box:before',
+      boxShadow: @_color_for_before()
+    jss '#box:after',
+      boxShadow: @_color_for_after()
+  
+  # Callback, when the opacity of the shadow color have changed.
+  #
+  # value - Integer.
+  opacity_changed: (value) ->
+    value /= 100
+    @shadow.opacity = value
+    $("#value_opacity").html(value)
+    jss '#box:before',
+      boxShadow: @_color_for_before()
+    jss '#box:after',
+      boxShadow: @_color_for_after()
+      
   # Callback, when the 'sublayer' checkbox have changed.
   # If it is checked, we display all the underlying stuff to the user.
   sublayer_changed: ->
@@ -60,8 +95,16 @@ class window.ShadowMaker
   show_code: ->
     $("#code div").html(@shadow.to_string())
   
+  # private
   
+  _color_for_before: ->
+    "0 -#{@shadow.shift}px #{@shadow.blur}px rgba(0,0,0,#{@shadow.opacity})"
+  
+  _color_for_after: ->
+    "0 #{@shadow.shift}px #{@shadow.blur}px rgba(0,0,0,#{@shadow.opacity})"
 
+
+################################################################################
 # Representing the state of an Horizontal Curve Shadow.
 class HorizontalCurveShadow
 
@@ -71,6 +114,9 @@ class HorizontalCurveShadow
     @radius = 50
     @left = 10
     @distance = 0
+    @blur = 10
+    @shift = 15
+    @opacity = 0.5
   
   # Get the CSS3 code for this particular shadow effect.
   #
@@ -79,6 +125,8 @@ class HorizontalCurveShadow
     code = @_code_for_box()
     code += @_code_for_box_before()
     code += @_code_for_box_after()
+  
+  # private
   
   _code_for_box: ->
     "#box {\n  position: relative;\n}\n"
@@ -92,6 +140,9 @@ class HorizontalCurveShadow
     border-radius: #{@radius}%;\n
     z-index: -1;\n
     top: #{@distance}%;\n
+    content: \"\";\n
+    -webkit-box-shadow: 0 -#{@shift}px #{@blur}px rgba(0,0,0,#{@opacity});\n
+    box-shadow: 0 -#{@shift}px #{@blur}px rgba(0,0,0,#{@opacity});\n
     }\n"
 
   _code_for_box_after: ->
@@ -103,4 +154,7 @@ class HorizontalCurveShadow
     border-radius: #{@radius}%;\n
     z-index: -1;\n
     bottom: #{@distance}%;\n
+    content: \"\";\n
+    -webkit-box-shadow: 0 #{@shift}px #{@blur}px rgba(0,0,0,#{@opacity});\n
+    box-shadow: 0 #{@shift}px #{@blur}px rgba(0,0,0,#{@opacity});\n
     }\n"
