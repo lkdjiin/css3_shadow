@@ -73,29 +73,18 @@ section#setup
   position: relative
   background-color: #fff
 
-#box:before
-  -webkit-box-shadow: 0 -15px 10px rgba(0,0,0,0.5)
-  box-shadow: 0 -15px 10px rgba(0,0,0,0.5)
+#box:before, #box:after
   position: absolute
-  border-radius: 50%
-  left: 10%
-  top: 0
-  z-index: -1
-  width: 80%
-  height: 20%
   content: ""
-
-#box:after
-  -webkit-box-shadow: 0 15px 10px rgba(0,0,0,0.5)
-  box-shadow: 0 15px 10px rgba(0,0,0,0.5)
-  position: absolute
-  border-radius: 50%
-  left: 10%
-  bottom: 0
-  z-index: -1
-  width: 80%
-  height: 20%
-  content: ""
+  box-shadow: 0 0 0 rgba(0,0,0,1)
+  border-radius: 0
+  left: auto
+  right: auto
+  top: auto
+  bottom: auto
+  width: 0
+  height: 0
+        
 
 // THE CODE
 //------------------------------------------------------------------------------

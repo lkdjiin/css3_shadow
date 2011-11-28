@@ -1,4 +1,4 @@
 %h2 Type
-%select
-  %option{value: "curved_hz"} Horizontal curve
+%select{id: "shape", onchange: "window.maker.shape_changed()"}
+  %option{value: "curved_hz", selected: "selected"} Horizontal curve
   %option{value: "curved_vt"} Vertical curve
