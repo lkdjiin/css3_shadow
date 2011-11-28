@@ -76,12 +76,3 @@ class window.ShadowMaker
     $("#code div").html(@maker.to_string())
   
   
-
-
-
-
-
-
-
-
-
