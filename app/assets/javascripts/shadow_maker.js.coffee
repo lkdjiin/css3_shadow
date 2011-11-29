@@ -4,8 +4,10 @@
 ################################################################################
 class window.ShadowMaker
 
+  # Create a new 'façade' for the application along with a default shadow.
   constructor: ->
     @maker = new window.HorizontalCurveShadow()
+
 
   # Callback, when the width of the shadow have changed.
   #
@@ -14,12 +16,14 @@ class window.ShadowMaker
     @maker.set_width(width)
     $("#value_width").html(width)
   
+  
   # Callback, when the height of the shadow have changed.
   #
   # height - Integer.
   height_changed: (height) ->
     @maker.set_height(height)
     $("#value_height").html(height)
+  
   
   # Callback, when the radius of the shadow have changed.
   #
@@ -28,12 +32,14 @@ class window.ShadowMaker
     @maker.set_radius(value)
     $("#value_radius").html(value)
   
+  
   # Callback, when the distance of the shadow from the side of the box have changed.
   #
   # value - Integer.
   distance_changed: (value) ->
     @maker.set_distance(value)
     $("#value_distance").html(value)
+  
   
   # Callback, when the blur of the shadow color have changed.
   #
@@ -42,6 +48,7 @@ class window.ShadowMaker
     @maker.set_blur(value)
     $("#value_blur").html(value)
   
+  
   # Callback, when the shift of the shadow color have changed.
   #
   # value - Integer.
@@ -49,12 +56,14 @@ class window.ShadowMaker
     @maker.set_yshift(value)
     $("#value_yshift").html(value)
   
+  
   # Callback, when the opacity of the shadow color have changed.
   #
   # value - Integer.
   opacity_changed: (value) ->
     @maker.set_opacity(value)
     $("#value_opacity").html(value)
+      
       
   # Callback, when the 'sublayer' checkbox have changed.
   # If it is checked, we display all the underlying stuff to the user.
@@ -65,19 +74,16 @@ class window.ShadowMaker
     jss '#box:after',
       zIndex: value
   
+  
   # Callback, when the user change the shadow shape.
   shape_changed: ->
     switch $('select#shape').val()
       when 'curved_hz' then @maker = new window.HorizontalCurveShadow()
       when 'curved_vt' then @maker = new window.VerticalCurveShadow()
   
+  
   # Displays the code to the user.
   show_code: ->
     $("#code div").html(@maker.to_string())
-  
-  
-  # private
-  
-  _create_callback: (property) ->
-    ""
+
   
