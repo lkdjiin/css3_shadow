@@ -11,6 +11,9 @@ class window.VerticalCurveShadow extends window.BaseShadow
     @blur = 15
     @opacity = 0.6
     @shift = 0
+    @width = 100
+    @left = 0
+    @right = 0
 
     # Set the UI
     $("#setup_shadow").html(@_setup_shadow_part())
@@ -79,13 +82,25 @@ class window.VerticalCurveShadow extends window.BaseShadow
       height: "#{@height}%"
   
   
-  code_for_box_before: -> "before..."
+  code_for_box_before: ->
+    "#box:before {\n
+    position: absolute;\n
+    width: #{@width}%;\n
+    height: #{@height}%;\n
+    border-radius: 10px / 100px;\n
+    z-index: -1;\n
+    top: #{@top}%;\n
+    bottom: #{@bottom}%;\n
+    content: \"\";\n
+    -webkit-box-shadow: #{@_color_for_before()};\n
+    box-shadow: #{@_color_for_before()};\n
+    }\n"
   
   
-  code_for_box_after: -> "after..."
+  code_for_box_after: -> ""
   
   
-  _color_for_before: ->
-    "0 0 #{@blur}px rgba(0,0,0,#{@opacity})"
+  _color_for_before: -> "0 0 #{@blur}px rgba(0,0,0,#{@opacity})"
+    
   
      

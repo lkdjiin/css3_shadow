@@ -45,9 +45,9 @@ class window.ShadowMaker
   # Callback, when the shift of the shadow color have changed.
   #
   # value - Integer.
-  shift_changed: (value) ->
-    @maker.set_shift(value)
-    $("#value_shift").html(value)
+  yshift_changed: (value) ->
+    @maker.set_yshift(value)
+    $("#value_yshift").html(value)
   
   # Callback, when the opacity of the shadow color have changed.
   #
@@ -75,4 +75,9 @@ class window.ShadowMaker
   show_code: ->
     $("#code div").html(@maker.to_string())
   
+  
+  # private
+  
+  _create_callback: (property) ->
+    ""
   

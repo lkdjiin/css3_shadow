@@ -11,5 +11,5 @@
 //= require base_shadow
 //= require vertical_curve_shadow
 //= require horizontal_curve_shadow
-//= require shadow
+//= require shadow_maker
 //= require init
