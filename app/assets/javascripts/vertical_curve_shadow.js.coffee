@@ -3,6 +3,7 @@
 ################################################################################
 class window.VerticalCurveShadow extends window.BaseShadow
 
+  # Create a new shadow with two vertical curves, top and bottom.
   constructor: ->
     super()
     @top = 10
@@ -15,9 +16,7 @@ class window.VerticalCurveShadow extends window.BaseShadow
     @left = 0
     @right = 0
 
-    # Set the UI
-    $("#setup_shadow").html(@_setup_shadow_part())
-    
+    @set_the_UI()
     @_set_callbacks()
     @_display_default_shadow()
 
@@ -56,6 +55,8 @@ class window.VerticalCurveShadow extends window.BaseShadow
   
   # private
   
+  
+  # Set the UI (sliders, etc.) to tweak the shadow.
   _setup_shadow_part: ->
     (@setup_part_sublayer() +
     @setup_part("Height", "height", 80) +
@@ -82,6 +83,9 @@ class window.VerticalCurveShadow extends window.BaseShadow
       height: "#{@height}%"
   
   
+  # Get the CSS code fot the '#box:before'.
+  #
+  # Returns String.
   code_for_box_before: ->
     "#box:before {\n
     position: absolute;\n

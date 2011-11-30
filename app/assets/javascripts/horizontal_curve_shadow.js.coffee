@@ -3,6 +3,7 @@
 ################################################################################
 class window.HorizontalCurveShadow extends window.BaseShadow
 
+  # Create a new shadow with two horizontal curves, top and bottom.
   constructor: ->
     super()
     @width = 80
@@ -14,9 +15,7 @@ class window.HorizontalCurveShadow extends window.BaseShadow
     @yshift = 15
     @opacity = 0.5
     
-    # Set the UI
-    $("#setup_shadow").html(@_setup_shadow_part())
-    
+    @set_the_UI()
     @_set_callbacks()
     @_display_default_shadow()
   
@@ -98,6 +97,8 @@ class window.HorizontalCurveShadow extends window.BaseShadow
   
   # private
   
+  
+  # Set the UI (sliders, etc.) to tweak the shadow.
   _setup_shadow_part: ->
     (@setup_part_sublayer() +
     @setup_part("Width", "width", 80) +
@@ -137,7 +138,10 @@ class window.HorizontalCurveShadow extends window.BaseShadow
       width: "#{@width}%"
       height: "#{@height}%"
       
-      
+  
+  # Get the CSS code fot the '#box:before'.
+  #
+  # Returns String.
   code_for_box_before: ->
     "#box:before {\n
     position: absolute;\n
@@ -153,6 +157,9 @@ class window.HorizontalCurveShadow extends window.BaseShadow
     }\n"
 
 
+  # Get the CSS code fot the '#box:after'.
+  #
+  # Returns String.
   code_for_box_after: ->
     "#box:after {\n
     position: absolute;\n

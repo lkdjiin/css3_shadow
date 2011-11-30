@@ -80,3 +80,6 @@ class window.BaseShadow
   #
   # Returns String.
   code_for_box: -> "#box {\n  position: relative;\n}\n"
+  
+  set_the_UI: ->
+    $("#setup_shadow").html(@_setup_shadow_part())

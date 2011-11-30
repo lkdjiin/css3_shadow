@@ -77,6 +77,7 @@ class window.ShadowMaker
   
   # Callback, when the user change the shadow shape.
   shape_changed: ->
+    $('#code pre code div').html('')
     switch $('select#shape').val()
       when 'curved_hz' then @maker = new window.HorizontalCurveShadow()
       when 'curved_vt' then @maker = new window.VerticalCurveShadow()
