@@ -1,4 +1,5 @@
-= Welcome to CSS3 Drop Shadows
+Welcome to CSS3 Drop Shadows
+============================
 
 A web application to build nice CSS3 box shadows.
 
