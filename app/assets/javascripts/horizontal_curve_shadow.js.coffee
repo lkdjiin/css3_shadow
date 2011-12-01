@@ -3,9 +3,17 @@
 ################################################################################
 class window.HorizontalCurveShadow extends window.BaseShadow
 
-  # Create a new shadow with two horizontal curves, top and bottom.
-  constructor: ->
+  # Create a new shadow with horizontal curves.
+  #
+  # subtype - 'top' for top only shadow
+  #           'bottom' for bottom only shadow
+  #           'both' for top and bottom shadows
+  constructor: (subtype)->
     super()
+    
+    @top_shadow = if subtype in ['top', 'both'] then true else false
+    @bottom_shadow = if subtype in ['bottom', 'both'] then true else false
+    
     @width = 80
     @height = 40
     @radius = 50
@@ -24,12 +32,14 @@ class window.HorizontalCurveShadow extends window.BaseShadow
   set_width: (value) ->
     @width = value
     @left = (100 - value) / 2
-    jss '#box:before',
-      width: value + '%'
-      left: "#{@left}%"
-    jss '#box:after',
-      width: value + '%'
-      left: "#{@left}%"
+    if @top_shadow
+      jss '#box:before',
+        width: value + '%'
+        left: "#{@left}%"
+    if @bottom_shadow
+      jss '#box:after',
+        width: value + '%'
+        left: "#{@left}%"
       
       
   # value - Integer.
@@ -91,9 +101,9 @@ class window.HorizontalCurveShadow extends window.BaseShadow
   # Returns String.
   to_string: ->
     code = @code_for_box()
-    code += @code_for_box_before()
-    code += @code_for_box_after()
-  
+    code += @code_for_box_before() if @top_shadow
+    code += @code_for_box_after() if @bottom_shadow
+    code
   
   # private
   
@@ -101,42 +111,44 @@ class window.HorizontalCurveShadow extends window.BaseShadow
   # Set the UI (sliders, etc.) to tweak the shadow.
   _setup_shadow_part: ->
     (@setup_part_sublayer() +
-    @setup_part("Width", "width", 80) +
-    @setup_part("Height", "height", 20) +
-    @setup_part("Radius", "radius", 50) +
-    @setup_part("Distance", "distance", 0) +
-    @setup_part("Color blur", "blur", 10) +
-    @setup_part("Color Y shift", "yshift", 15) +
-    @setup_part("Color opacity", "opacity", 0.5) )
+    @setup_part("Width", "width", @width) +
+    @setup_part("Height", "height", @height) +
+    @setup_part("Radius", "radius", @radius) +
+    @setup_part("Distance", "distance", @distance) +
+    @setup_part("Color blur", "blur", @blur) +
+    @setup_part("Color Y shift", "yshift", @yshift) +
+    @setup_part("Color opacity", "opacity", @opacity) )
   
   
   _set_callbacks: ->
-    @set_slider_callback("width", 50, 100, 80, 2)
-    @set_slider_callback("height", 5, 50, 20)
-    @set_slider_callback("radius", 0, 50, 50)
-    @set_slider_callback("distance", 0, 10, 0)
-    @set_slider_callback("blur", 0, 50, 10)
-    @set_slider_callback("yshift", 0, 50, 15)
-    @set_slider_callback("opacity", 0, 100, 50)
+    @set_slider_callback("width", 50, 100, @width, 2)
+    @set_slider_callback("height", 5, 50, @height)
+    @set_slider_callback("radius", 0, 50, @radius)
+    @set_slider_callback("distance", 0, 10, @distance)
+    @set_slider_callback("blur", 0, 50, @blur)
+    @set_slider_callback("yshift", 0, 50, @yshift)
+    @set_slider_callback("opacity", 0, 100, @opacity * 100)
 
 
   _display_default_shadow: ->
-    jss '#box:before',
-      boxShadow: "0 -#{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity})"
-      borderRadius: "#{@radius}%"
-      left: "#{@left}%"
-      top: 0
-      zIndex: -1
-      width: "#{@width}%"
-      height: "#{@height}%"
-    jss '#box:after',
-      boxShadow: "0 #{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity})"
-      borderRadius: "#{@radius}%"
-      left: "#{@left}%"
-      bottom: 0
-      zIndex: -1
-      width: "#{@width}%"
-      height: "#{@height}%"
+    if @top_shadow
+      jss '#box:before',
+        boxShadow: "0 -#{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity})"
+        borderRadius: "#{@radius}%"
+        left: "#{@left}%"
+        top: 0
+        zIndex: -1
+        width: "#{@width}%"
+        height: "#{@height}%"
+    if @bottom_shadow
+      jss '#box:after',
+        boxShadow: "0 #{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity})"
+        borderRadius: "#{@radius}%"
+        left: "#{@left}%"
+        bottom: 0
+        zIndex: -1
+        width: "#{@width}%"
+        height: "#{@height}%"
       
   
   # Get the CSS code fot the '#box:before'.

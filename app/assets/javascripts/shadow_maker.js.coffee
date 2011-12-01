@@ -6,7 +6,7 @@ class window.ShadowMaker
 
   # Create a new 'façade' for the application along with a default shadow.
   constructor: ->
-    @maker = new window.HorizontalCurveShadow()
+    @maker = new window.HorizontalCurveShadow('both')
 
 
   # Callback, when the width of the shadow have changed.
@@ -79,7 +79,9 @@ class window.ShadowMaker
   shape_changed: ->
     $('#code pre code div').html('')
     switch $('select#shape').val()
-      when 'curved_hz' then @maker = new window.HorizontalCurveShadow()
+      when 'curved_hz' then @maker = new window.HorizontalCurveShadow('both')
+      when 'curved_hz_bottom' then @maker = new window.HorizontalCurveShadow('bottom')
+      when 'curved_hz_top' then @maker = new window.HorizontalCurveShadow('top')
       when 'curved_vt' then @maker = new window.VerticalCurveShadow()
   
   
