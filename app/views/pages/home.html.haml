@@ -11,7 +11,8 @@
   
 
 %section#code
-  %input{ type: "submit", value: "View Code", onclick: "window.maker.show_code()"}
+  %h1 The code
+  %input{ type: "submit", value: "(Re)generate Code", onclick: "window.maker.show_code()"}
   %pre
     %code
       %div
@@ -19,28 +20,31 @@
 %section#about
   %h1 About
   %p
-    Welcome to CSS3 Drop Shadows, a web application to build nice CSS3 box shadows:
+    %strong Welcome to CSS3 Drop Shadows, a web application to build nice CSS3 box shadows:
   %ul
     %li
-      For now it has been tested only in Firefox 8 but should also work in "webkit" browsers.
+      For now it has been tested only in <strong>Firefox 8</strong> but should also work in "webkit" browsers.
     %li
-      Open Source, released under the #{link_to "GNU Public License v3", "http://www.gnu.org/copyleft/gpl.html"}
+      <strong>Open Source</strong>, released under the #{link_to "GNU Public License v3", "http://www.gnu.org/copyleft/gpl.html"}
     %li
-      #{link_to "Fork me", "https://github.com/lkdjiin/css3_shadow"} on GitHub
+      #{link_to "Fork me", "https://github.com/lkdjiin/css3_shadow"} on <strong>GitHub</strong>
     %li
-      #{link_to "Follow me", "twitter.com/lkdjiin"} on Twitter
+      #{link_to "Follow me", "twitter.com/lkdjiin"} on <strong>Twitter</strong>
     %li
       Feel free to #{mail_to "xavier.nayrac@gmail.com", "email me", :encode => "javascript"} with any questions
 
 %section#todo
   %h1 Todo
-  %p In no particular order:
+  %p 
+    %strong In no particular order:
   %ul
     %li Setup of the box (dimension, color, etc.)
     %li 
-      add many type of shadows (see for example 
+      Add many type of shadows (see for example 
       #{link_to "this page", "http://nicolasgallagher.com/css-drop-shadows-without-images/demo/"})
     %li Test in many browsers
-    %li Doing a Help Page
-    %li Doing a Comments Page
-    %li produce sass, scss and less code
+    %li Do a Help Page
+    %li Do a Comments Page
+    %li Produce sass, scss and less code
+    %li Code syntax highlight
+    %li add a button to copy code to clipboard

@@ -11,34 +11,65 @@ $section-setup-size: 600px
 body
   font-family: Arial, "MS Trebuchet", sans-serif
   color: $front-color
+  font-size: 16px
+  strong
+    font-weight: bold
 
+a
+  color: #4D4D80
+  font-weight: bold
+  
 h1
-  margin-left: 10px
   font-size: 30px
   
 header
   background-color: $front-color
   height: $header-height
-  
-  h1
-    color: white
+  h1, nav li
     line-height: $header-height
+    display: inline-block
     margin-left: 10px
-    font-size: 30px
+  h1, a
+    color: white
+  h1
+    float: left
+    margin-right: 100px
+  nav
+    ul
+      li
+        margin-right: 30px
+        a
+          text-decoration: none
+          font-size: 20px
+          font-weight: bold
 
+p
+  margin-bottom: 10px
+
+section ul
+  margin-left: 30px
+  li
+    line-height: 30px
+    &:before
+      content: "# "
+      font-weight: bold
+      color: red
 
 // SHARED
 //------------------------------------------------------------------------------
 
+header, footer
+  background-color: $front-color
+  color: white
+  
 .application_centered
   margin: 0 20px
 
 .setup_box 
-  //max-width: 300px
-  //min-height: 80px
+  padding: 5px 15px
+  border-radius: 5px
   border: 1px solid #ccc
   margin: 5px
-  padding: 5px
   display: inline-block
 
 // SETUP BOXES
@@ -47,15 +78,18 @@ header
 section#setup
   float: left
   width: $section-setup-size
+  h2
+    font-weight: bold
+    margin: 10px 0 2px 0
 
 #setup_type
-  width: 270px
+  width: 250px
 
 #setup_subtype
-  width: 270px
+  width: 250px
   
 #setup_shadow
-  width: 570px
+  width: 550px
 
 
 // THE BOX
@@ -63,6 +97,8 @@ section#setup
 
 #box_outer
   border: 1px solid #ccc
+  margin-top: 5px
+  border-radius: 5px
   padding: 100px
   background-color: #ccc
   position: relative
@@ -95,3 +131,27 @@ section#setup
 
 section#code
   clear: both
+  pre
+    margin-top: 30px
+    background-color: #f8f8f8
+    padding: 20px
+    border-radius: 5px
+    border: 1px solid #ddd
+    code
+      line-height: 25px
+
+// FOOTER
+//------------------------------------------------------------------------------
+footer
+  padding: 10px 20px
+  margin-top: 50px
+  
+
+// SECTIONS
+//------------------------------------------------------------------------------
+#code, #about, #todo
+  margin-top: 50px
+  h1
+    padding-bottom: 10px
+    border-bottom: 1px solid $front-color
+    margin-bottom: 30px

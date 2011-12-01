@@ -7,13 +7,13 @@ class window.HorizontalCurveShadow extends window.BaseShadow
   constructor: ->
     super()
     @width = 80
-    @height = 20
+    @height = 40
     @radius = 50
     @left = 10
     @distance = 0
-    @blur = 10
-    @yshift = 15
-    @opacity = 0.5
+    @blur = 16
+    @yshift = 7
+    @opacity = 0.4
     
     @set_the_UI()
     @_set_callbacks()
