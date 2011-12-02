@@ -1,7 +1,7 @@
 ################################################################################
 # Base of all Shadow classes.
 ################################################################################
-class window.BaseShadow
+class window.BaseShadow extends window.Tweakable
 
   # Create a new shadow, with all properties reseted.
   constructor: ->
@@ -31,28 +31,7 @@ class window.BaseShadow
     '<input id="value_index" type="checkbox" onchange="window.maker.sublayer_changed()" value="1"/>
      <label for="value_index">Display sub layer</label>'
   
-  
-  # Sets a callback for a UI setup slider. Callbacks are defined in
-  # ShadwMaker class.
-  #
-  # property      - String name of the shadow property (see #setup_part)
-  # min           - Minimal Integer value of the slider
-  # max           - Minimal Integer value of the slider
-  # initial_value - Initial Integer value of the slider
-  # step          - Step Integer value of the slider
-  #
-  # See also jquery-ui slider
-  set_slider_callback: (property, min, max, initial_value, step) ->
-    step = 1 if step is undefined
-    $("#slider_#{property}").slider
-      range: "min"
-      min: min
-      max: max
-      step: step
-      value: initial_value
-      slide: (event, ui) -> eval("window.maker.#{property}_changed(ui.value)")
-  
-  
+
   # Reset all possible shadow properties to none.
   _reset_properties: ->
     jss '#box:before',
