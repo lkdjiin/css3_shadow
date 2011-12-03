@@ -11,8 +11,6 @@
 //= require tweakable
 //= require box_tweaking
 //= require base_shadow
-//= require vertical_curve_shadow
-//= require horizontal_curve_shadow
+//= require shadows/shadows
 //= require shadow_maker
-
 //= require init
