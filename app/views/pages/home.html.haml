@@ -12,7 +12,8 @@
 
 %section#code
   %h1 The code
-  %input{ type: "submit", value: "(Re)generate Code", onclick: "window.maker.show_code()"}
+  %button{ onclick: "window.maker.show_code()"} 
+    (Re)generate Code
   %pre
     %code
       %div

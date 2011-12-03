@@ -78,13 +78,18 @@ class window.ShadowMaker
   # Callback, when the user change the shadow shape.
   shape_changed: ->
     $('#code pre code div').html('')
-    switch $('select#shape').val()
-      when 'curved_hz' then @maker = new window.HorizontalCurveShadow('both')
-      when 'curved_hz_bottom' then @maker = new window.HorizontalCurveShadow('bottom')
-      when 'curved_hz_top' then @maker = new window.HorizontalCurveShadow('top')
-      when 'curved_vt' then @maker = new window.VerticalCurveShadow()
+    $('#setup_shadow').animate({opacity: 0}, 300, 'linear', ->
+      switch $('select#shape').val()
+        when 'curved_hz' then @maker = new window.HorizontalCurveShadow('both')
+        when 'curved_hz_bottom' then @maker = new window.HorizontalCurveShadow('bottom')
+        when 'curved_hz_top' then @maker = new window.HorizontalCurveShadow('top')
+        when 'curved_vt' then @maker = new window.VerticalCurveShadow()
+      $('#setup_shadow').animate({opacity: 1})
+    )
+    
   
-  
+
+    
   # Displays the code to the user.
   show_code: ->
     code = window.box_tweaking.to_string() + @maker.to_string()
