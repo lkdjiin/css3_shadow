@@ -1,7 +1,7 @@
-
+################################################################################
+# An object who have got sliders to tweak some of its properties.
+################################################################################
 class window.Tweakable
-
-  constructor: ->
 
   # Sets a callback for a UI setup slider. Callbacks are defined in
   # ShadwMaker class.

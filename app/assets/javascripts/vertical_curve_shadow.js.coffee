@@ -20,7 +20,7 @@ class window.VerticalCurveShadow extends window.BaseShadow
     @_set_callbacks()
     @_display_default_shadow()
 
-
+  # value - Integer.
   set_height: (value) ->
     @top = @bottom = (100 - value) / 2
     @height = value
@@ -48,8 +48,7 @@ class window.VerticalCurveShadow extends window.BaseShadow
   #
   # Returns String.
   to_string: ->
-    code = @code_for_box()
-    code += @code_for_box_before()
+    code = @code_for_box_before()
     code += @code_for_box_after()
   
   
@@ -63,13 +62,14 @@ class window.VerticalCurveShadow extends window.BaseShadow
     @setup_part("Color blur", "blur", 10) +
     @setup_part("Color opacity", "opacity", 0.6) )
   
-  
+  # Set callback methods (mostly on sliders) to know what to do when values
+  # changed.
   _set_callbacks: ->
     @set_slider_callback("height", 0, 100, 80, 2)
     @set_slider_callback("blur", 0, 50, 15)
     @set_slider_callback("opacity", 0, 100, 60)
   
-  
+  # Display a shadow on the box with default values.
   _display_default_shadow: ->
     jss '#box:before',
       boxShadow: "0 0 #{@blur}px rgba(0,0,0,#{@opacity})"
@@ -100,10 +100,14 @@ class window.VerticalCurveShadow extends window.BaseShadow
     box-shadow: #{@_color_for_before()};\n
     }\n"
   
-  
+  # The CSS 'box-shadow' value for 'box:after'.
+  #
+  # Returns String.
   code_for_box_after: -> ""
   
-  
+  # The CSS 'box-shadow' value for 'box:before'.
+  #
+  # Returns String.
   _color_for_before: -> "0 0 #{@blur}px rgba(0,0,0,#{@opacity})"
     
   

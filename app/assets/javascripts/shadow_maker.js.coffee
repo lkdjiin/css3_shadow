@@ -87,7 +87,8 @@ class window.ShadowMaker
   
   # Displays the code to the user.
   show_code: ->
-    $("#code div").html(@maker.to_string())
+    code = window.box_tweaking.to_string() + @maker.to_string()
+    $("#code div").html(code)
 
   
   

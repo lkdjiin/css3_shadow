@@ -54,11 +54,7 @@ class window.BaseShadow extends window.Tweakable
       height: 0
       
   
-  # Get CSS code of the shadowed box. Not all code! Just the box (not the 
-  # :before and :after parts).
-  #
-  # Returns String.
-  code_for_box: -> "#box {\n  position: relative;\n}\n"
-  
+  # Display User Interface (sliders, etc.) to be able to tweak the shadow.
+  # Method #_setup_shadow_part must be defined in childs.
   set_the_UI: ->
     $("#setup_shadow").html(@_setup_shadow_part())
