@@ -8,19 +8,21 @@ class window.BaseShadow extends window.Tweakable
     @_reset_properties()
   
   
-  # Get HTML code for a part of the UI setup (the UI that tweak the shadow).
+  # Get HTML code for a part of the UI setup (the UI to tweak the shadow).
   #
   # label         - String name of the property displayed to the user.
   # property      - String name of the shadow property to tweak (usually
   #                 same as label but in downcase).
   # initial_value - The Integer/Float initial value of the property.
+  # unit          - The String unit of the property ('%' per default)
   #
   # Examples:
   #   @setup_part("Color blur", "blur", 10)
   #
   # Returns String.
-  setup_part: (label, property, initial_value) ->
-    "<h2>#{label} <span id='value_#{property}'>#{initial_value}</span>%</h2>
+  setup_part: (label, property, initial_value, unit) ->
+    unit = '%' if unit is undefined
+    "<h2>#{label} <span id='value_#{property}'>#{initial_value}</span>#{unit}</h2>
      <div id='slider_#{property}'></div>"
   
   
@@ -53,3 +55,19 @@ class window.BaseShadow extends window.Tweakable
   # Method #_setup_shadow_part must be defined in childs.
   set_the_UI: ->
     $("#setup_shadow").html(@_setup_shadow_part())
+  
+  
+  # Get the CSS3 code for this particular shadow effect.
+  #
+  # Note code_for_box_before() and code_for_box_after() must be 
+  # defined in childs.
+  #
+  # Returns String.
+  to_string: ->
+    code = @code_for_box_before()
+    code += @code_for_box_after()
+  
+  init: ->
+    @set_the_UI()
+    @_set_callbacks()
+    @_display_default_shadow()

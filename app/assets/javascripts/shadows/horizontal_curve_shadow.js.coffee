@@ -23,9 +23,7 @@ class window.HorizontalCurveShadow extends window.BaseShadow
     @yshift = 7
     @opacity = 0.4
     
-    @set_the_UI()
-    @_set_callbacks()
-    @_display_default_shadow()
+    @init()
   
   
   # value - Integer.
@@ -95,17 +93,6 @@ class window.HorizontalCurveShadow extends window.BaseShadow
     jss '#box:after',
       boxShadow: @_color_for_after()
     
-    
-  # Get the CSS3 code for this particular shadow effect.
-  #
-  # Returns String.
-  to_string: ->
-    code = @code_for_box_before() if @top_shadow
-    code += @code_for_box_after() if @bottom_shadow
-    code
-  
-  # private
-  
   
   # Set the UI (sliders, etc.) to tweak the shadow.
   _setup_shadow_part: ->

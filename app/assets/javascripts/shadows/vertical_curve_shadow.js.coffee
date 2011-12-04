@@ -6,6 +6,7 @@ class window.VerticalCurveShadow extends window.BaseShadow
   # Create a new shadow with two vertical curves, left and right.
   constructor: ->
     super()
+    
     @top = 10
     @bottom = 10
     @height = 80
@@ -16,9 +17,8 @@ class window.VerticalCurveShadow extends window.BaseShadow
     @left = 0
     @right = 0
 
-    @set_the_UI()
-    @_set_callbacks()
-    @_display_default_shadow()
+    @init()
+
 
   # value - Integer.
   set_height: (value) ->
@@ -42,17 +42,6 @@ class window.VerticalCurveShadow extends window.BaseShadow
     @opacity = value / 100
     jss '#box:before',
       boxShadow: @_color_for_before()
-      
-      
-  # Get the CSS3 code for this particular shadow effect.
-  #
-  # Returns String.
-  to_string: ->
-    code = @code_for_box_before()
-    code += @code_for_box_after()
-  
-  
-  # private
   
   
   # Set the UI (sliders, etc.) to tweak the shadow.
