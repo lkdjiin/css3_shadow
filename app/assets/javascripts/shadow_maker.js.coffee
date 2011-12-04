@@ -1,85 +1,35 @@
 ################################################################################
 # The application main class, the one who is the 'façade'.
-# For now, it is the only public class.
 ################################################################################
 class window.ShadowMaker
 
   # Create a new 'façade' for the application along with a default shadow.
-  constructor: ->
+  #
+  # properties - Array of String of the shadow properties that can be changed 
+  #              by user.
+  constructor: (properties)->
     @maker = new window.HorizontalCurveShadow('both')
-
-
-  # Callback, when the left of the shadow have changed.
-  #
-  # value - Integer.
-  # @TODO Most of the *_changed method are identical
-  left_changed: (value) ->
-    @maker.set_left(value)
-    $("#value_left").html(value)
+    @create_changer(prop) for prop in properties
     
-  # Callback, when the bottom of the shadow have changed.
-  #
-  # value - Integer.
-  # @TODO Most of the *_changed method are identical
-  bottom_changed: (value) ->
-    @maker.set_bottom(value)
-    $("#value_bottom").html(value)
 
-  # Callback, when the width of the shadow have changed.
+  # Create the callback method for a property that can be changed by user.
+  # 
+  # property - The String name of the property we can change.
   #
-  # width - Integer.
-  width_changed: (width) ->
-    @maker.set_width(width)
-    $("#value_width").html(width)
-  
-  
-  # Callback, when the height of the shadow have changed.
+  # Examples
+  #   @create_changer("left") 
+  #   # Creates the following method for this class:
+  #   left_changed: (value) ->
+  #     @maker.set_left(value)
+  #     $("#value_left").html(value)
   #
-  # height - Integer.
-  height_changed: (height) ->
-    @maker.set_height(height)
-    $("#value_height").html(height)
-  
-  
-  # Callback, when the radius of the shadow have changed.
-  #
-  # value - Integer.
-  radius_changed: (value) ->
-    @maker.set_radius(value)
-    $("#value_radius").html(value)
-  
-  
-  # Callback, when the distance of the shadow from the side of the box have changed.
-  #
-  # value - Integer.
-  distance_changed: (value) ->
-    @maker.set_distance(value)
-    $("#value_distance").html(value)
-  
-  
-  # Callback, when the blur of the shadow color have changed.
-  #
-  # value - Integer.
-  blur_changed: (value) ->
-    @maker.set_blur(value)
-    $("#value_blur").html(value)
-  
-  
-  # Callback, when the shift of the shadow color have changed.
-  #
-  # value - Integer.
-  yshift_changed: (value) ->
-    @maker.set_yshift(value)
-    $("#value_yshift").html(value)
-  
-  
-  # Callback, when the opacity of the shadow color have changed.
-  #
-  # value - Integer.
-  opacity_changed: (value) ->
-    @maker.set_opacity(value)
-    $("#value_opacity").html(value)
-      
+  # TODO I know eval() is bad. If you can do a better code,
+  #     please do it and let me know.
+  create_changer: (property)->
+    this.constructor::["#{property}_changed"] = (value) ->
+      eval("this.maker.set_#{property}(value);")
+      eval("$(\"#value_#{property}\").html(value);")
+
       
   # Callback, when the 'sublayer' checkbox have changed.
   # If it is checked, we display all the underlying stuff to the user.
@@ -94,7 +44,7 @@ class window.ShadowMaker
   # Callback, when the user change the shadow shape.
   # Performs some transition animation too.
   #
-  # @TODO Find a solution to not open this class when adding a new type of shadow.
+  # TODO Find a solution to not open this class when adding a new type of shadow.
   shape_changed: ->
     $('#code pre code div').html('')
     $('#setup_shadow').animate({opacity: 0}, 300, 'linear', =>
