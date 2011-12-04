@@ -34,7 +34,7 @@ class window.BaseShadow extends window.Tweakable
 
   # Reset all possible shadow properties to none.
   _reset_properties: ->
-    jss '#box:before',
+    options =
       boxShadow: "none"
       borderRadius: 0
       left: "auto"
@@ -43,16 +43,11 @@ class window.BaseShadow extends window.Tweakable
       bottom: "auto"
       width: 0
       height: 0
-    jss '#box:after',
-      boxShadow: "none"
-      borderRadius: 0
-      left: "auto"
-      right: "auto"
-      top: "auto"
-      bottom: "auto"
-      width: 0
-      height: 0
-      
+      MozTransform: "none"
+      MozTransformOrigin: "none"
+    jss '#box:before', options
+    jss '#box:after', options
+
   
   # Display User Interface (sliders, etc.) to be able to tweak the shadow.
   # Method #_setup_shadow_part must be defined in childs.

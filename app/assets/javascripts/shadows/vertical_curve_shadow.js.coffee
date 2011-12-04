@@ -3,7 +3,7 @@
 ################################################################################
 class window.VerticalCurveShadow extends window.BaseShadow
 
-  # Create a new shadow with two vertical curves, top and bottom.
+  # Create a new shadow with two vertical curves, left and right.
   constructor: ->
     super()
     @top = 10

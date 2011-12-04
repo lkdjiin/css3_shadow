@@ -9,6 +9,22 @@ class window.ShadowMaker
     @maker = new window.HorizontalCurveShadow('both')
 
 
+  # Callback, when the left of the shadow have changed.
+  #
+  # value - Integer.
+  # @TODO Most of the *_changed method are identical
+  left_changed: (value) ->
+    @maker.set_left(value)
+    $("#value_left").html(value)
+    
+  # Callback, when the bottom of the shadow have changed.
+  #
+  # value - Integer.
+  # @TODO Most of the *_changed method are identical
+  bottom_changed: (value) ->
+    @maker.set_bottom(value)
+    $("#value_bottom").html(value)
+
   # Callback, when the width of the shadow have changed.
   #
   # width - Integer.
@@ -76,6 +92,9 @@ class window.ShadowMaker
   
   
   # Callback, when the user change the shadow shape.
+  # Performs some transition animation too.
+  #
+  # @TODO Find a solution to not open this class when adding a new type of shadow.
   shape_changed: ->
     $('#code pre code div').html('')
     $('#setup_shadow').animate({opacity: 0}, 300, 'linear', =>
@@ -83,6 +102,7 @@ class window.ShadowMaker
         when 'curved_hz' then new window.HorizontalCurveShadow('both')
         when 'curved_hz_bottom' then new window.HorizontalCurveShadow('bottom')
         when 'curved_hz_top' then new window.HorizontalCurveShadow('top')
+        when 'perspective' then new window.PerspectiveShadow()
         when 'curved_vt' then new window.VerticalCurveShadow()
       $('#setup_shadow').animate({opacity: 1})
     )
