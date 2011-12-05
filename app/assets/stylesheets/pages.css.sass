@@ -2,6 +2,7 @@
 //------------------------------------------------------------------------------
 
 $front-color: #484040
+$second-color: #9F998A
 $header-height: 80px
 $section-setup-size: 600px
 
@@ -34,6 +35,8 @@ header
   h1
     float: left
     margin-right: 100px
+    span
+      color: $second-color
   nav
     ul
       li
@@ -54,6 +57,7 @@ section ul
       content: "# "
       font-weight: bold
       color: red
+
 
 // SHARED
 //------------------------------------------------------------------------------
@@ -112,6 +116,7 @@ section#setup
   border-radius: 5px
   position: relative
   background-color: #fff
+  box-shadow: 0 1px 5px rgba(0,0,0,0.25), 0 0 50px rgba(0,0,0,0.2) inset
 
 #box:before, #box:after
   position: absolute
