@@ -24,10 +24,11 @@ h1
   font-size: 30px
   
 header
+  padding-top: 20px
   background-color: $front-color
   height: $header-height
   h1, nav li
-    line-height: $header-height
+    line-height: 50px
     display: inline-block
     margin-left: 10px
   h1, a
@@ -45,6 +46,12 @@ header
           text-decoration: none
           font-size: 20px
           font-weight: bold
+          
+  #slogan
+    color: $second-color
+    font-size: 16px
+    margin-left: 10px
+    letter-spacing: 0.2em
 
 p
   margin-bottom: 10px
@@ -150,16 +157,20 @@ section#code
 footer
   padding: 10px 20px
   margin-top: 50px
-  
+  #thanks, #thanks a
+    color: $second-color
+    
 
 // SECTIONS
 //------------------------------------------------------------------------------
-#code, #about, #todo
+#code, #about, #todo, #history
   margin-top: 50px
   h1
     padding-bottom: 10px
     border-bottom: 1px solid $front-color
     margin-bottom: 30px
+  h2
+    font-weight: bold
 
 // JQUERY-UI
 //------------------------------------------------------------------------------

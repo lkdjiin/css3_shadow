@@ -15,6 +15,7 @@
             %li= link_to "home", root_path
             %li= link_to "about", root_path(anchor: "about")
             %li= link_to "todo", root_path(anchor: "todo")
+        #slogan For designers - To learn CSS3 - To try some experiment
 
     %div{id: "main_content", class: "application_centered"}
       = yield
@@ -22,3 +23,7 @@
     %footer
       %p Xavier Nayrac, 2011
       %p GNU General Public License v3
+      #thanks
+        powered by #{link_to "ruby on rails", "http://rubyonrails.org/"} -
+        hosted on #{link_to "heroku", "http://www.heroku.com/"}
+        
