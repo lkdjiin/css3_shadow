@@ -1,3 +1,9 @@
+#top
+  %p
+    = image_tag "ff32x32.png"
+    %strong Tested only in Firefox 8
+    \- Will soon run in Chrome
+
 %section#setup
   %div{id: "setup_type", class: "setup_box"}
     = render "pages/home/setup_type"
@@ -7,7 +13,9 @@
     = render "pages/home/setup_shadow"
 
 %section#box_outer
+  %p If you don't see some nice shadows, try with Firefox...
   #box
+    
   
 
 %section#code
@@ -26,9 +34,6 @@
     %li Good for <strong>designers</strong>
     %li Good to <strong>learn CSS3</strong>
     %li Good to try some <strong>experiment</strong>
-    %li
-      For now it has been tested only in <strong>Firefox 8</strong> but should also work in "webkit" 
-      browsers.
     %li
       <strong>Open Source</strong>, released under the 
       #{link_to "GNU Public License v3", "http://www.gnu.org/copyleft/gpl.html"}
@@ -64,13 +69,7 @@
 %section#history
   %h1 History
   
-  %h2 v0.2 (2011-12-XX)
-  %ul
-    %li xxx
-    %li xxx
-    %li xxx
-    
-  %h2 v0.1 (2011-12-04)
+  %h2 v0.1.1 (2011-12-05)
   %ul
     %li First public release
     

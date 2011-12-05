@@ -24,7 +24,7 @@ h1
   font-size: 30px
   
 header
-  padding-top: 20px
+  padding-top: 10px
   background-color: $front-color
   height: $header-height
   h1, nav li
@@ -40,6 +40,7 @@ header
       color: $second-color
   nav
     ul
+      text-align: right
       li
         margin-right: 30px
         a
@@ -52,6 +53,7 @@ header
     font-size: 16px
     margin-left: 10px
     letter-spacing: 0.2em
+    text-shadow: 0 0 10px rgba(255,255,255,0.5)
 
 p
   margin-bottom: 10px
@@ -65,7 +67,19 @@ section ul
       font-weight: bold
       color: red
 
-
+#top
+  background-color: $second-color
+  color: white
+  line-height: 32px
+  height: 32px
+  border-radius: 5px
+  margin: 5px 0
+  padding: 5px
+  img
+    width: 32
+    height: 32
+    vertical-align: middle
+  
 // SHARED
 //------------------------------------------------------------------------------
 
@@ -110,11 +124,18 @@ section#setup
   border: 1px solid #ccc
   margin-top: 5px
   border-radius: 5px
-  padding: 100px
+  padding: 30px 100px 100px 100px
   background-color: #fcfcfc
   position: relative
   z-index: -99
   margin-left: $section-setup-size
+  
+  p
+    font-size: 20px
+    text-transform: uppercase
+    margin-bottom: 60px
+    text-align: center
+    color: $second-color
 
 #box 
   width: 400px
@@ -124,6 +145,8 @@ section#setup
   position: relative
   background-color: #fff
   box-shadow: 0 1px 5px rgba(0,0,0,0.25), 0 0 50px rgba(0,0,0,0.1) inset
+  
+  
 
 #box:before, #box:after
   position: absolute
