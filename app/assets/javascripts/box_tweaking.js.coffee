@@ -31,4 +31,6 @@ class window.BoxTweaking extends window.Tweakable
       position: relative;\n
       width: #{$('#value_box_width').html()}px;\n
       height: #{$('#value_box_height').html()}px;\n
+      background-color: #fff;\n
+      box-shadow: 0 1px 5px rgba(0,0,0,0.25), 0 0 50px rgba(0,0,0,0.1) inset;\n
     }\n"
