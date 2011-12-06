@@ -1,13 +1,19 @@
 ################################################################################
-# Representing the state of a Left Perspective Shadow.
+# Representing the state of a Perspective Shadow.
 ################################################################################
 class window.PerspectiveShadow extends window.BaseShadow
 
   # Create a new shadow.
-  constructor: ->
+  #
+  # subtype - 'left' for left perspective
+  #           'right' for right perspective
+  constructor: (subtype) ->
     super()
     
-    @left = 80
+    @subtype = subtype
+    
+    @left = 80 if subtype is 'left'
+    @right = 80 if subtype is 'right'
     @bottom = 5
     @width = 100
     @height = 37
@@ -27,6 +33,12 @@ class window.PerspectiveShadow extends window.BaseShadow
     @left = value
     jss '#box:before',
       left: value + 'px'
+  
+  # value - Integer.
+  set_right: (value) ->
+    @right = value
+    jss '#box:before',
+      right: value + 'px'
   
   # value - Integer.
   set_bottom: (value) ->
@@ -67,8 +79,10 @@ class window.PerspectiveShadow extends window.BaseShadow
   # value - Integer.
   set_skew: (value) ->
     @skew = value
+    tmp = "skew(#{@skew}deg)"
+    tmp = "skew(-#{@skew}deg)" if @subtype is 'right'
     jss '#box:before',
-      MozTransform: "skew(#{@skew}deg)"
+      MozTransform: tmp
   
   # value - Integer.
   set_yorigin: (value) ->
@@ -79,13 +93,17 @@ class window.PerspectiveShadow extends window.BaseShadow
   # value - Integer.
   set_radius: (value) ->
     @radius = value
+    tmp = "#{value}% 0 0 0"
+    tmp = "0 #{value}% 0 0" if @subtype is 'right'
     jss '#box:before',
-      borderRadius: "#{value}% 0 0 0"
+      borderRadius: tmp
   
   # Set the UI (sliders, etc.) to tweak the shadow.
   _setup_shadow_part: ->
+    tmp = @setup_part("Left", "left", @left, 'px')
+    tmp = @setup_part("Right", "right", @right, 'px') if @subtype is 'right'
     (@setup_part_sublayer() +
-    @setup_part("Left", "left", @left, 'px') +
+    tmp +
     @setup_part("Bottom", "bottom", @bottom, 'px') +
     @setup_part("Width", "width", @width) +
     @setup_part("Height", "height", @height) +
@@ -99,7 +117,10 @@ class window.PerspectiveShadow extends window.BaseShadow
   # Set callback methods (mostly on sliders) to know what to do when values
   # changed.
   _set_callbacks: ->
-    @set_slider_callback("left", 0, 100, @left)
+    if @subtype is 'left'
+      @set_slider_callback("left", 0, 100, @left)
+    else
+      @set_slider_callback("right", 0, 100, @right)
     @set_slider_callback("bottom", 0, 100, @bottom)
     @set_slider_callback("width", 0, 100, @width)
     @set_slider_callback("height", 0, 100, @height)
@@ -113,50 +134,86 @@ class window.PerspectiveShadow extends window.BaseShadow
   # Display a shadow on the box with default values.
   _display_default_shadow: ->
     jss '#box:before',
-      left: "#{@left}px"
       bottom: "#{@bottom}px"
       width: "#{@width}%"
       height: "#{@height}%"
-      boxShadow: "-#{@xshift}px 0 #{@blur}px rgba(0,0,0,#{@opacity})"
-      MozTransform: "skew(#{@skew}deg)"
       MozTransformOrigin: "#{@xorigin}% #{@yorigin}%"
       zIndex: -1
-      borderRadius: "#{@radius}% 0 0 0"
-  
+      
+    if @subtype is 'left'
+      jss '#box:before',
+        left: "#{@left}px"
+        boxShadow: "-#{@xshift}px 0 #{@blur}px rgba(0,0,0,#{@opacity})"
+        MozTransform: "skew(#{@skew}deg)"
+        borderRadius: "#{@radius}% 0 0 0"
+    else
+      jss '#box:before',
+        right: "#{@right}px"
+        boxShadow: "#{@xshift}px 0 #{@blur}px rgba(0,0,0,#{@opacity})"
+        MozTransform: "skew(-#{@skew}deg)"
+        borderRadius: "0 #{@radius}% 0 0"
   
   # The CSS 'box-shadow' value for 'box:before'.
   #
   # Returns String.
   # TODO this should be in parent
-  _color_for_before: -> "-#{@xshift}px 0 #{@blur}px rgba(0,0,0,#{@opacity})"
+  _color_for_before: ->
+    if @subtype is 'left'
+      "-#{@xshift}px 0 #{@blur}px rgba(0,0,0,#{@opacity})"
+    else
+      "#{@xshift}px 0 #{@blur}px rgba(0,0,0,#{@opacity})"
   
   
   # Get the CSS code fot the '#box:before'.
   #
   # Returns String.
   code_for_box_before: ->
-    "#box:before {\n
-    position: absolute;\n
-    left: #{@left}px;\n
-    bottom: #{@bottom}px;\n
-    width: #{@width}%;\n
-    height: #{@height}%;\n
-    border-radius: #{@radius}% 0 0 0;\n
-    z-index: -1;\n
-    content: \"\";\n
-    -webkit-box-shadow: #{@_color_for_before()};\n
-    box-shadow: #{@_color_for_before()};\n
-    -webkit-transform: skew(#{@skew}deg);\n
-    -moz-transform: skew(#{@skew}deg);\n
-    -ms-transform: skew(#{@skew}deg);\n
-    -o-transform: skew(#{@skew}deg);\n
-    transform: skew(#{@skew}deg);\n
-    -webkit-transform-origin: #{@xorigin}% #{@yorigin}%;\n
-    -moz-transform-origin: #{@xorigin}% #{@yorigin}%;\n
-    -ms-transform-origin: #{@xorigin}% #{@yorigin}%;\n
-    -o-transform-origin: #{@xorigin}% #{@yorigin}%;\n
-    transform-origin: #{@xorigin}% #{@yorigin}%;\n
-    }\n"
+    if @subtype is 'left'
+      "#box:before {\n
+      position: absolute;\n
+      left: #{@left}px;\n
+      bottom: #{@bottom}px;\n
+      width: #{@width}%;\n
+      height: #{@height}%;\n
+      border-radius: #{@radius}% 0 0 0;\n
+      z-index: -1;\n
+      content: \"\";\n
+      -webkit-box-shadow: #{@_color_for_before()};\n
+      box-shadow: #{@_color_for_before()};\n
+      -webkit-transform: skew(#{@skew}deg);\n
+      -moz-transform: skew(#{@skew}deg);\n
+      -ms-transform: skew(#{@skew}deg);\n
+      -o-transform: skew(#{@skew}deg);\n
+      transform: skew(#{@skew}deg);\n
+      -webkit-transform-origin: #{@xorigin}% #{@yorigin}%;\n
+      -moz-transform-origin: #{@xorigin}% #{@yorigin}%;\n
+      -ms-transform-origin: #{@xorigin}% #{@yorigin}%;\n
+      -o-transform-origin: #{@xorigin}% #{@yorigin}%;\n
+      transform-origin: #{@xorigin}% #{@yorigin}%;\n
+      }\n"
+    else
+      "#box:before {\n
+      position: absolute;\n
+      right: #{@right}px;\n
+      bottom: #{@bottom}px;\n
+      width: #{@width}%;\n
+      height: #{@height}%;\n
+      border-radius: 0 #{@radius}% 0 0;\n
+      z-index: -1;\n
+      content: \"\";\n
+      -webkit-box-shadow: #{@_color_for_before()};\n
+      box-shadow: #{@_color_for_before()};\n
+      -webkit-transform: skew(-#{@skew}deg);\n
+      -moz-transform: skew(-#{@skew}deg);\n
+      -ms-transform: skew(-#{@skew}deg);\n
+      -o-transform: skew(-#{@skew}deg);\n
+      transform: skew(-#{@skew}deg);\n
+      -webkit-transform-origin: #{@xorigin}% #{@yorigin}%;\n
+      -moz-transform-origin: #{@xorigin}% #{@yorigin}%;\n
+      -ms-transform-origin: #{@xorigin}% #{@yorigin}%;\n
+      -o-transform-origin: #{@xorigin}% #{@yorigin}%;\n
+      transform-origin: #{@xorigin}% #{@yorigin}%;\n
+      }\n"
   
   # The CSS 'box-shadow' value for 'box:after'.
   #
