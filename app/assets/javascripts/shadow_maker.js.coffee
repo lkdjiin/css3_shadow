@@ -34,11 +34,8 @@ class window.ShadowMaker
   # Callback, when the 'sublayer' checkbox have changed.
   # If it is checked, we display all the underlying stuff to the user.
   sublayer_changed: ->
-    value = if $("#value_index").is(":checked") then 1 else -1
-    jss '#box:before',
-      zIndex: value
-    jss '#box:after',
-      zIndex: value
+    value = if $("#value_index").is(":checked") then "1" else "-1"
+    window.sheet_mgr.set_after_and_before "zIndex", value
   
   
   # Callback, when the user change the shadow shape.

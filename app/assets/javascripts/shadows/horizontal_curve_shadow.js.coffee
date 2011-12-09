@@ -31,67 +31,51 @@ class window.HorizontalCurveShadow extends window.BaseShadow
     @width = value
     @left = (100 - value) / 2
     if @top_shadow
-      jss '#box:before',
-        width: value + '%'
-        left: "#{@left}%"
+      window.sheet_mgr.set SSC.BEFORE, "width", "#{value}%"
+      window.sheet_mgr.set SSC.BEFORE, "left", "#{@left}%"
     if @bottom_shadow
-      jss '#box:after',
-        width: value + '%'
-        left: "#{@left}%"
+      window.sheet_mgr.set SSC.AFTER, "width", "#{value}%"
+      window.sheet_mgr.set SSC.AFTER, "left", "#{@left}%"
       
       
   # value - Integer.
   set_height: (value) ->
     @height = value
-    jss '#box:before',
-      height: value + '%'
-    jss '#box:after',
-      height: value + '%'
+    window.sheet_mgr.set_after_and_before "height", "#{value}%"
   
   
   # value - Integer.
   set_radius: (value) ->
     @radius = value
-    jss '#box:before',
-      borderRadius: value + '%'
-    jss '#box:after',
-      borderRadius: value + '%'
+    window.sheet_mgr.set_after_and_before "borderRadius", "#{value}%"
   
   
   # value - Integer.
   set_distance: (value) ->
     @distance = value
-    jss '#box:before',
-      top: value + '%'
-    jss '#box:after',
-      bottom: value + '%'
+    window.sheet_mgr.set SSC.BEFORE, "top", "#{value}%"
+    window.sheet_mgr.set SSC.AFTER, "bottom", "#{value}%"
   
   
   # value - Integer.
   set_blur: (value) ->
     @blur = value
-    jss '#box:before',
-      boxShadow: @_color_for_before()
-    jss '#box:after',
-      boxShadow: @_color_for_after()
+    window.sheet_mgr.set SSC.BEFORE, "boxShadow", @_color_for_before()
+    window.sheet_mgr.set SSC.AFTER, "boxShadow", @_color_for_after()
   
   
   # value - Integer.
   set_yshift: (value) ->
     @yshift = value
-    jss '#box:before',
-      boxShadow: @_color_for_before()
-    jss '#box:after',
-      boxShadow: @_color_for_after()
+    window.sheet_mgr.set SSC.BEFORE, "boxShadow", @_color_for_before()
+    window.sheet_mgr.set SSC.AFTER, "boxShadow", @_color_for_after()
   
   
   # value - Integer.
   set_opacity: (value) ->
     @opacity = value / 100
-    jss '#box:before',
-      boxShadow: @_color_for_before()
-    jss '#box:after',
-      boxShadow: @_color_for_after()
+    window.sheet_mgr.set SSC.BEFORE, "boxShadow", @_color_for_before()
+    window.sheet_mgr.set SSC.AFTER, "boxShadow", @_color_for_after()
     
   
   # Set the UI (sliders, etc.) to tweak the shadow.
@@ -119,26 +103,27 @@ class window.HorizontalCurveShadow extends window.BaseShadow
 
   # Display a shadow on the box with default values.
   _display_default_shadow: ->
-    if @top_shadow
-      jss '#box:before',
-        boxShadow: "0 -#{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity})"
-        borderRadius: "#{@radius}%"
-        left: "#{@left}%"
-        top: 0
-        zIndex: -1
-        width: "#{@width}%"
-        height: "#{@height}%"
+    window.sheet_mgr.delete_rules()
+    after = ""
+    before =""
     if @bottom_shadow
-      jss '#box:after',
-        boxShadow: "0 #{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity})"
-        borderRadius: "#{@radius}%"
-        left: "#{@left}%"
-        bottom: 0
-        zIndex: -1
-        width: "#{@width}%"
-        height: "#{@height}%"
+      after = "box-shadow: 0 #{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity});
+               border-radius: #{@radius}%;
+               z-index: -1;
+               left: #{@left}%;
+               bottom: 0;
+               width: #{@width}%;
+               height: #{@height}%;"
+    if @top_shadow
+      before = "box-shadow: 0 -#{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity});
+               border-radius: #{@radius}%;
+               z-index: -1;
+               left: #{@left}%;
+               top: 0;
+               width: #{@width}%;
+               height: #{@height}%;"
+    window.sheet_mgr.insert_after_and_before_rules after, before
       
-  
   # Get the CSS code fot the '#box:before'.
   #
   # Returns String.

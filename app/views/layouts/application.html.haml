@@ -1,6 +1,9 @@
 !!! 5
 %html{ lang: "en" }
   %head
+    / This "style" tag is mandatory because the method used to set 
+    / the CSS pseudo elements.
+    %style
     %title= @title
     %meta{ charset: "UTF-8" }
     = render "layouts/scripts"

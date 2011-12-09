@@ -36,19 +36,7 @@ class window.BaseShadow extends window.Tweakable
 
   # Reset all possible shadow properties to none.
   _reset_properties: ->
-    options =
-      boxShadow: "none"
-      borderRadius: 0
-      left: "auto"
-      right: "auto"
-      top: "auto"
-      bottom: "auto"
-      width: 0
-      height: 0
-      MozTransform: "none"
-      MozTransformOrigin: "none"
-    jss '#box:before', options
-    jss '#box:after', options
+    window.sheet_mgr.reset
 
   
   # Display User Interface (sliders, etc.) to be able to tweak the shadow.
