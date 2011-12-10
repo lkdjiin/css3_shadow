@@ -128,36 +128,42 @@ class window.HorizontalCurveShadow extends window.BaseShadow
   #
   # Returns String.
   code_for_box_before: ->
-    "#box:before {\n
-    position: absolute;\n
-    width: #{@width}%;\n
-    height: #{@height}%;\n
-    left: #{@left}%;\n
-    border-radius: #{@radius}%;\n
-    z-index: -1;\n
-    top: #{@distance}%;\n
-    content: \"\";\n
-    -webkit-box-shadow: 0 -#{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity});\n
-    box-shadow: 0 -#{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity});\n
-    }\n"
+    if @top_shadow
+      "#box:before {\n
+      position: absolute;\n
+      width: #{@width}%;\n
+      height: #{@height}%;\n
+      left: #{@left}%;\n
+      border-radius: #{@radius}%;\n
+      z-index: -1;\n
+      top: #{@distance}%;\n
+      content: \"\";\n
+      -webkit-box-shadow: 0 -#{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity});\n
+      box-shadow: 0 -#{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity});\n
+      }\n"
+    else
+      ""
 
 
   # Get the CSS code fot the '#box:after'.
   #
   # Returns String.
   code_for_box_after: ->
-    "#box:after {\n
-    position: absolute;\n
-    width: #{@width}%;\n
-    height: #{@height}%;\n
-    left: #{@left}%;\n
-    border-radius: #{@radius}%;\n
-    z-index: -1;\n
-    bottom: #{@distance}%;\n
-    content: \"\";\n
-    -webkit-box-shadow: 0 #{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity});\n
-    box-shadow: 0 #{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity});\n
-    }\n"
+    if @bottom_shadow
+      "#box:after {\n
+      position: absolute;\n
+      width: #{@width}%;\n
+      height: #{@height}%;\n
+      left: #{@left}%;\n
+      border-radius: #{@radius}%;\n
+      z-index: -1;\n
+      bottom: #{@distance}%;\n
+      content: \"\";\n
+      -webkit-box-shadow: 0 #{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity});\n
+      box-shadow: 0 #{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity});\n
+      }\n"
+    else
+      ""
 
   # The CSS 'box-shadow' value for 'box:before'.
   #
