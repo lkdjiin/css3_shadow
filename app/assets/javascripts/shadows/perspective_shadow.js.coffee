@@ -31,72 +31,63 @@ class window.PerspectiveShadow extends window.BaseShadow
   # value - Integer.
   set_left: (value) ->
     @left = value
-    jss '#box:before',
-      left: value + 'px'
+    window.sheet_mgr.set SSC.BEFORE, "left", "#{@left}px"
   
   # value - Integer.
   set_right: (value) ->
     @right = value
-    jss '#box:before',
-      right: value + 'px'
+    window.sheet_mgr.set SSC.BEFORE, "right", "#{@right}px"
   
   # value - Integer.
   set_bottom: (value) ->
     @bottom = value
-    jss '#box:before',
-      bottom: value + 'px'
+    window.sheet_mgr.set SSC.BEFORE, "bottom", "#{@bottom}px"
       
   # value - Integer.
   set_width: (value) ->
     @width = value
-    jss '#box:before',
-      width: value + '%'
+    window.sheet_mgr.set SSC.BEFORE, "width", "#{@width}%"
   
   # value - Integer.
   set_height: (value) ->
     @height = value
-    jss '#box:before',
-      height: value + '%'
+    window.sheet_mgr.set SSC.BEFORE, "height", "#{@height}%"
   
   # value - Integer.
   set_xshift: (value) ->
     @xshift = value
-    jss '#box:before',
-      boxShadow: @_color_for_before()
+    window.sheet_mgr.set SSC.BEFORE, "boxShadow", @_color_for_before()
   
   # value - Integer.
   set_blur: (value) ->
     @blur = value
-    jss '#box:before',
-      boxShadow: @_color_for_before()
+    window.sheet_mgr.set SSC.BEFORE, "boxShadow", @_color_for_before()
       
   # value - Integer.
   set_opacity: (value) ->
     @opacity = value / 100
-    jss '#box:before',
-      boxShadow: @_color_for_before()
+    window.sheet_mgr.set SSC.BEFORE, "boxShadow", @_color_for_before()
   
   # value - Integer.
   set_skew: (value) ->
     @skew = value
     tmp = "skew(#{@skew}deg)"
     tmp = "skew(-#{@skew}deg)" if @subtype is 'right'
-    jss '#box:before',
-      MozTransform: tmp
+    window.sheet_mgr.set SSC.BEFORE, "MozTransform", tmp
+    window.sheet_mgr.set SSC.BEFORE, "WebkitTransform", tmp
   
   # value - Integer.
   set_yorigin: (value) ->
     @yorigin = value
-    jss '#box:before',
-      MozTransformOrigin: "#{@xorigin}% #{@yorigin}%"
+    window.sheet_mgr.set SSC.BEFORE, "MozTransformOrigin", "#{@xorigin}% #{@yorigin}%"
+    window.sheet_mgr.set SSC.BEFORE, "WebkitTransformOrigin", "#{@xorigin}% #{@yorigin}%"
       
   # value - Integer.
   set_radius: (value) ->
     @radius = value
     tmp = "#{value}% 0 0 0"
     tmp = "0 #{value}% 0 0" if @subtype is 'right'
-    jss '#box:before',
-      borderRadius: tmp
+    window.sheet_mgr.set SSC.BEFORE, "borderRadius", tmp
   
   # Set the UI (sliders, etc.) to tweak the shadow.
   _setup_shadow_part: ->
@@ -133,25 +124,29 @@ class window.PerspectiveShadow extends window.BaseShadow
   
   # Display a shadow on the box with default values.
   _display_default_shadow: ->
-    jss '#box:before',
-      bottom: "#{@bottom}px"
-      width: "#{@width}%"
-      height: "#{@height}%"
-      MozTransformOrigin: "#{@xorigin}% #{@yorigin}%"
-      zIndex: -1
+    window.sheet_mgr.delete_rules()
+    after = "z-index: -1;"
+    before = "bottom: #{@bottom}px;
+              width: #{@width}%;
+              height: #{@height}%;
+              -moz-transform-origin: #{@xorigin}% #{@yorigin}%;
+              -webkit-transform-origin: #{@xorigin}% #{@yorigin}%;
+              z-index: -1;"
       
     if @subtype is 'left'
-      jss '#box:before',
-        left: "#{@left}px"
-        boxShadow: "-#{@xshift}px 0 #{@blur}px rgba(0,0,0,#{@opacity})"
-        MozTransform: "skew(#{@skew}deg)"
-        borderRadius: "#{@radius}% 0 0 0"
+      before += "left: #{@left}px;
+                 box-shadow: -#{@xshift}px 0 #{@blur}px rgba(0,0,0,#{@opacity});
+                 -moz-transform: skew(#{@skew}deg);
+                 -webkit-transform: skew(#{@skew}deg);
+                 border-radius: #{@radius}% 0 0 0;"
     else
-      jss '#box:before',
-        right: "#{@right}px"
-        boxShadow: "#{@xshift}px 0 #{@blur}px rgba(0,0,0,#{@opacity})"
-        MozTransform: "skew(-#{@skew}deg)"
-        borderRadius: "0 #{@radius}% 0 0"
+      before += "right: #{@right}px;
+                 box-shadow: #{@xshift}px 0 #{@blur}px rgba(0,0,0,#{@opacity});
+                 -moz-transform: skew(-#{@skew}deg);
+                 -webkit-transform: skew(-#{@skew}deg);
+                 border-radius: 0 #{@radius}% 0 0;"
+    window.sheet_mgr.insert_after_and_before_rules after, before
+    
   
   # The CSS 'box-shadow' value for 'box:before'.
   #
