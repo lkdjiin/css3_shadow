@@ -1,5 +1,7 @@
 ################################################################################
 # Apply CSS rules to after and before pseudo elements of the box.
+#
+# See also stylesheet_constants.js
 ################################################################################
 class window.StylesheetManager
   

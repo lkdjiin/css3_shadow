@@ -24,24 +24,21 @@ class window.VerticalCurveShadow extends window.BaseShadow
   set_height: (value) ->
     @top = @bottom = (100 - value) / 2
     @height = value
-    jss '#box:before',
-      top: "#{@top}%"
-      bottom: "#{@bottom}%"
-      height: "#{@height}%"
+    window.sheet_mgr.set SSC.BEFORE, "top", "#{@top}%"
+    window.sheet_mgr.set SSC.BEFORE, "bottom", "#{@bottom}%"
+    window.sheet_mgr.set SSC.BEFORE, "height", "#{@height}%"
   
   
   # value - Integer.
   set_blur: (value) ->
     @blur = value
-    jss '#box:before',
-      boxShadow: @_color_for_before()
+    window.sheet_mgr.set SSC.BEFORE, "boxShadow", @_color_for_before()
   
   
   # value - Integer.
   set_opacity: (value) ->
     @opacity = value / 100
-    jss '#box:before',
-      boxShadow: @_color_for_before()
+    window.sheet_mgr.set SSC.BEFORE, "boxShadow", @_color_for_before()
   
   
   # Set the UI (sliders, etc.) to tweak the shadow.
@@ -60,16 +57,18 @@ class window.VerticalCurveShadow extends window.BaseShadow
   
   # Display a shadow on the box with default values.
   _display_default_shadow: ->
-    jss '#box:before',
-      boxShadow: "0 0 #{@blur}px rgba(0,0,0,#{@opacity})"
-      borderRadius: "10px / 100px"
-      left: 0
-      right: 0
-      top: "#{@top}%"
-      bottom: "#{@bottom}%"
-      zIndex: -1
-      width: "100%"
-      height: "#{@height}%"
+    window.sheet_mgr.delete_rules()
+    after = "z-index: -1;"
+    before = "box-shadow: 0 0 #{@blur}px rgba(0,0,0,#{@opacity});
+             border-radius: 10px / 100px;
+             z-index: -1;
+             left: 0;
+             right: 0;
+             top: #{@top}%;
+             bottom: #{@bottom}%;
+             width: 100%;
+             height: #{@height}%;"
+    window.sheet_mgr.insert_after_and_before_rules after, before
   
   
   # Get the CSS code fot the '#box:before'.

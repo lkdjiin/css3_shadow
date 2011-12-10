@@ -104,8 +104,8 @@ class window.HorizontalCurveShadow extends window.BaseShadow
   # Display a shadow on the box with default values.
   _display_default_shadow: ->
     window.sheet_mgr.delete_rules()
-    after = ""
-    before =""
+    after = "z-index: -1;"
+    before ="z-index: -1;"
     if @bottom_shadow
       after = "box-shadow: 0 #{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity});
                border-radius: #{@radius}%;
