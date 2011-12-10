@@ -7,7 +7,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-// require jss
 //= require stylesheet_constants
 //= require stylesheet_manager
 //= require tweakable
