@@ -1,8 +1,8 @@
 #top
   %p
     = image_tag "ff32x32.png"
-    %strong Tested only in Firefox 8
-    \- Will soon run in Chrome
+    = image_tag "chromium32x32.png"
+    %strong It works in Firefox 8 and Chromium 15
 
 %section#setup
   %div{id: "setup_type", class: "setup_box"}
@@ -13,7 +13,7 @@
     = render "pages/home/setup_shadow"
 
 %section#box_outer
-  %p If you don't see some nice shadows, try with Firefox...
+  %p If you don't see some nice shadows, try with Firefox or Chrome
   #box
     
   
@@ -31,9 +31,6 @@
   %p
     %strong Welcome to CSS3 Drop Shadows, a web application to build nice CSS3 box shadows:
   %ul
-    %li Good for <strong>designers</strong>
-    %li Good to <strong>learn CSS3</strong>
-    %li Good to try some <strong>experiment</strong>
     %li
       <strong>Open Source</strong>, released under the 
       #{link_to "GNU Public License v3", "http://www.gnu.org/copyleft/gpl.html"}
