@@ -59,3 +59,17 @@ class window.BaseShadow extends window.Tweakable
     @set_the_UI()
     @_set_callbacks()
     @_display_default_shadow()
+    
+  css_code_for_transform: (value) ->
+    "-webkit-transform: #{value};\n
+     -moz-transform: #{value};\n
+     -ms-transform: #{value};\n
+     -o-transform: #{value};\n
+     transform: #{value};\n"
+  
+  css_code_for_transform_origin: (value) ->
+    "-webkit-transform-origin: #{value};\n
+     -moz-transform-origin: #{value};\n
+     -ms-transform-origin: #{value};\n
+     -o-transform-origin: #{value};\n
+     transform-origin: #{value};\n"

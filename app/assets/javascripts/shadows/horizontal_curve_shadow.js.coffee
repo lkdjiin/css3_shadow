@@ -138,7 +138,6 @@ class window.HorizontalCurveShadow extends window.BaseShadow
       z-index: -1;\n
       top: #{@distance}%;\n
       content: \"\";\n
-      -webkit-box-shadow: 0 -#{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity});\n
       box-shadow: 0 -#{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity});\n
       }\n"
     else
@@ -159,7 +158,6 @@ class window.HorizontalCurveShadow extends window.BaseShadow
       z-index: -1;\n
       bottom: #{@distance}%;\n
       content: \"\";\n
-      -webkit-box-shadow: 0 #{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity});\n
       box-shadow: 0 #{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity});\n
       }\n"
     else

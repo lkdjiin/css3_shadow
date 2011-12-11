@@ -84,7 +84,6 @@ class window.VerticalCurveShadow extends window.BaseShadow
     top: #{@top}%;\n
     bottom: #{@bottom}%;\n
     content: \"\";\n
-    -webkit-box-shadow: #{@_color_for_before()};\n
     box-shadow: #{@_color_for_before()};\n
     }\n"
   

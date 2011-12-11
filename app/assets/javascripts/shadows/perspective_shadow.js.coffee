@@ -168,18 +168,9 @@ class window.PerspectiveShadow extends window.BaseShadow
       border-radius: #{@radius}% 0 0 0;\n
       z-index: -1;\n
       content: \"\";\n
-      -webkit-box-shadow: #{@_color_for_before()};\n
       box-shadow: #{@_color_for_before()};\n
-      -webkit-transform: skew(#{@skew}deg);\n
-      -moz-transform: skew(#{@skew}deg);\n
-      -ms-transform: skew(#{@skew}deg);\n
-      -o-transform: skew(#{@skew}deg);\n
-      transform: skew(#{@skew}deg);\n
-      -webkit-transform-origin: #{@xorigin}% #{@yorigin}%;\n
-      -moz-transform-origin: #{@xorigin}% #{@yorigin}%;\n
-      -ms-transform-origin: #{@xorigin}% #{@yorigin}%;\n
-      -o-transform-origin: #{@xorigin}% #{@yorigin}%;\n
-      transform-origin: #{@xorigin}% #{@yorigin}%;\n
+      #{@css_code_for_transform('skew(' + @skew + 'deg)')}
+      #{@css_code_for_transform_origin(@xorigin + '% ' + @yorigin + '%')}
       }\n"
     else
       "#box:before {\n
@@ -191,18 +182,9 @@ class window.PerspectiveShadow extends window.BaseShadow
       border-radius: 0 #{@radius}% 0 0;\n
       z-index: -1;\n
       content: \"\";\n
-      -webkit-box-shadow: #{@_color_for_before()};\n
       box-shadow: #{@_color_for_before()};\n
-      -webkit-transform: skew(-#{@skew}deg);\n
-      -moz-transform: skew(-#{@skew}deg);\n
-      -ms-transform: skew(-#{@skew}deg);\n
-      -o-transform: skew(-#{@skew}deg);\n
-      transform: skew(-#{@skew}deg);\n
-      -webkit-transform-origin: #{@xorigin}% #{@yorigin}%;\n
-      -moz-transform-origin: #{@xorigin}% #{@yorigin}%;\n
-      -ms-transform-origin: #{@xorigin}% #{@yorigin}%;\n
-      -o-transform-origin: #{@xorigin}% #{@yorigin}%;\n
-      transform-origin: #{@xorigin}% #{@yorigin}%;\n
+      #{@css_code_for_transform('skew(-' + @skew + 'deg)')}
+      #{@css_code_for_transform_origin(@xorigin + '% ' + @yorigin + '%')}
       }\n"
   
   # The CSS 'box-shadow' value for 'box:after'.
