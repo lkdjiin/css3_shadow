@@ -4,7 +4,7 @@ $(document).ready ->
 
   # Shadow properties that can be changed by user.
   properties = ['left', 'right', 'bottom', 'width', 'height', 'radius', 'distance', 'blur', 
-                'xshift', 'yshift', 'opacity', 'skew', 'xorigin', 'yorigin']
+                'xshift', 'yshift', 'opacity', 'skew', 'xorigin', 'yorigin', 'rotate']
   
   window.sheet_mgr = new window.StylesheetManager()
   window.maker = new window.ShadowMaker(properties)

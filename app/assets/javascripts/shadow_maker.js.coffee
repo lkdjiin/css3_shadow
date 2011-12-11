@@ -50,6 +50,7 @@ class window.ShadowMaker
         when 'curved_hz_bottom' then new window.HorizontalCurveShadow('bottom')
         when 'curved_hz_top' then new window.HorizontalCurveShadow('top')
         when 'perspective' then new window.PerspectiveShadow('left')
+        when 'lifted' then new window.LiftedCornersShadow()
         when 'perspective_r' then new window.PerspectiveShadow('right')
         when 'curved_vt' then new window.VerticalCurveShadow()
       $('#setup_shadow').animate({opacity: 1})
