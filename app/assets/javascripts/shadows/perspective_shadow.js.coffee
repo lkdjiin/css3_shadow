@@ -56,38 +56,36 @@ class window.PerspectiveShadow extends window.BaseShadow
   # value - Integer.
   set_xshift: (value) ->
     @xshift = value
-    window.sheet_mgr.set SSC.BEFORE, "boxShadow", @_color_for_before()
+    window.sheet_mgr.set SSC.BEFORE, SSC.BOX_SHADOW, @_color_for_before()
   
   # value - Integer.
   set_blur: (value) ->
     @blur = value
-    window.sheet_mgr.set SSC.BEFORE, "boxShadow", @_color_for_before()
+    window.sheet_mgr.set SSC.BEFORE, SSC.BOX_SHADOW, @_color_for_before()
       
   # value - Integer.
   set_opacity: (value) ->
     @opacity = value / 100
-    window.sheet_mgr.set SSC.BEFORE, "boxShadow", @_color_for_before()
+    window.sheet_mgr.set SSC.BEFORE, SSC.BOX_SHADOW, @_color_for_before()
   
   # value - Integer.
   set_skew: (value) ->
     @skew = value
     tmp = "skew(#{@skew}deg)"
     tmp = "skew(-#{@skew}deg)" if @subtype is 'right'
-    window.sheet_mgr.set SSC.BEFORE, "MozTransform", tmp
-    window.sheet_mgr.set SSC.BEFORE, "WebkitTransform", tmp
+    window.sheet_mgr.set SSC.BEFORE, SSC.TRANSFORM, tmp
   
   # value - Integer.
   set_yorigin: (value) ->
     @yorigin = value
-    window.sheet_mgr.set SSC.BEFORE, "MozTransformOrigin", "#{@xorigin}% #{@yorigin}%"
-    window.sheet_mgr.set SSC.BEFORE, "WebkitTransformOrigin", "#{@xorigin}% #{@yorigin}%"
+    window.sheet_mgr.set SSC.BEFORE, SSC.TRANSFORM_ORIGIN, "#{@xorigin}% #{@yorigin}%"
       
   # value - Integer.
   set_radius: (value) ->
     @radius = value
     tmp = "#{value}% 0 0 0"
     tmp = "0 #{value}% 0 0" if @subtype is 'right'
-    window.sheet_mgr.set SSC.BEFORE, "borderRadius", tmp
+    window.sheet_mgr.set SSC.BEFORE, SSC.BORDER_RADIUS, tmp
   
   # Set the UI (sliders, etc.) to tweak the shadow.
   _setup_shadow_part: ->
@@ -129,22 +127,19 @@ class window.PerspectiveShadow extends window.BaseShadow
     before = "bottom: #{@bottom}px;
               width: #{@width}%;
               height: #{@height}%;
-              -moz-transform-origin: #{@xorigin}% #{@yorigin}%;
-              -webkit-transform-origin: #{@xorigin}% #{@yorigin}%;
+              #{SSC.CSS_TRANSFORM_ORIGIN}: #{@xorigin}% #{@yorigin}%;
               z-index: -1;"
       
     if @subtype is 'left'
       before += "left: #{@left}px;
-                 box-shadow: -#{@xshift}px 0 #{@blur}px rgba(0,0,0,#{@opacity});
-                 -moz-transform: skew(#{@skew}deg);
-                 -webkit-transform: skew(#{@skew}deg);
-                 border-radius: #{@radius}% 0 0 0;"
+                 #{SSC.CSS_BOX_SHADOW}: -#{@xshift}px 0 #{@blur}px rgba(0,0,0,#{@opacity});
+                 #{SSC.CSS_TRANSFORM}: skew(#{@skew}deg);
+                 #{SSC.CSS_BORDER_RADIUS}: #{@radius}% 0 0 0;"
     else
       before += "right: #{@right}px;
-                 box-shadow: #{@xshift}px 0 #{@blur}px rgba(0,0,0,#{@opacity});
-                 -moz-transform: skew(-#{@skew}deg);
-                 -webkit-transform: skew(-#{@skew}deg);
-                 border-radius: 0 #{@radius}% 0 0;"
+                 #{SSC.CSS_BOX_SHADOW}: #{@xshift}px 0 #{@blur}px rgba(0,0,0,#{@opacity});
+                 #{SSC.CSS_TRANSFORM}: skew(-#{@skew}deg);
+                 #{SSC.CSS_BORDER_RADIUS}: 0 #{@radius}% 0 0;"
     window.sheet_mgr.insert_after_and_before_rules after, before
     
   

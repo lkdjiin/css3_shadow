@@ -32,13 +32,13 @@ class window.VerticalCurveShadow extends window.BaseShadow
   # value - Integer.
   set_blur: (value) ->
     @blur = value
-    window.sheet_mgr.set SSC.BEFORE, "boxShadow", @_color_for_before()
+    window.sheet_mgr.set SSC.BEFORE, SSC.BOX_SHADOW, @_color_for_before()
   
   
   # value - Integer.
   set_opacity: (value) ->
     @opacity = value / 100
-    window.sheet_mgr.set SSC.BEFORE, "boxShadow", @_color_for_before()
+    window.sheet_mgr.set SSC.BEFORE, SSC.BOX_SHADOW, @_color_for_before()
   
   
   # Set the UI (sliders, etc.) to tweak the shadow.
@@ -59,8 +59,8 @@ class window.VerticalCurveShadow extends window.BaseShadow
   _display_default_shadow: ->
     window.sheet_mgr.delete_rules()
     after = "z-index: -1;"
-    before = "box-shadow: 0 0 #{@blur}px rgba(0,0,0,#{@opacity});
-             border-radius: 10px / 100px;
+    before = "#{SSC.CSS_BOX_SHADOW}: 0 0 #{@blur}px rgba(0,0,0,#{@opacity});
+             #{SSC.CSS_BORDER_RADIUS}: 10px / 100px;
              z-index: -1;
              left: 0;
              right: 0;

@@ -47,7 +47,7 @@ class window.HorizontalCurveShadow extends window.BaseShadow
   # value - Integer.
   set_radius: (value) ->
     @radius = value
-    window.sheet_mgr.set_after_and_before "borderRadius", "#{value}%"
+    window.sheet_mgr.set_after_and_before SSC.BORDER_RADIUS, "#{value}%"
   
   
   # value - Integer.
@@ -60,22 +60,22 @@ class window.HorizontalCurveShadow extends window.BaseShadow
   # value - Integer.
   set_blur: (value) ->
     @blur = value
-    window.sheet_mgr.set SSC.BEFORE, "boxShadow", @_color_for_before()
-    window.sheet_mgr.set SSC.AFTER, "boxShadow", @_color_for_after()
+    window.sheet_mgr.set SSC.BEFORE, SSC.BOX_SHADOW, @_color_for_before()
+    window.sheet_mgr.set SSC.AFTER, SSC.BOX_SHADOW, @_color_for_after()
   
   
   # value - Integer.
   set_yshift: (value) ->
     @yshift = value
-    window.sheet_mgr.set SSC.BEFORE, "boxShadow", @_color_for_before()
-    window.sheet_mgr.set SSC.AFTER, "boxShadow", @_color_for_after()
+    window.sheet_mgr.set SSC.BEFORE, SSC.BOX_SHADOW, @_color_for_before()
+    window.sheet_mgr.set SSC.AFTER, SSC.BOX_SHADOW, @_color_for_after()
   
   
   # value - Integer.
   set_opacity: (value) ->
     @opacity = value / 100
-    window.sheet_mgr.set SSC.BEFORE, "boxShadow", @_color_for_before()
-    window.sheet_mgr.set SSC.AFTER, "boxShadow", @_color_for_after()
+    window.sheet_mgr.set SSC.BEFORE, SSC.BOX_SHADOW, @_color_for_before()
+    window.sheet_mgr.set SSC.AFTER, SSC.BOX_SHADOW, @_color_for_after()
     
   
   # Set the UI (sliders, etc.) to tweak the shadow.
@@ -107,16 +107,16 @@ class window.HorizontalCurveShadow extends window.BaseShadow
     after = "z-index: -1;"
     before ="z-index: -1;"
     if @bottom_shadow
-      after = "box-shadow: 0 #{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity});
-               border-radius: #{@radius}%;
+      after = "#{SSC.CSS_BOX_SHADOW}: 0 #{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity});
+               #{SSC.CSS_BORDER_RADIUS}: #{@radius}%;
                z-index: -1;
                left: #{@left}%;
                bottom: 0;
                width: #{@width}%;
                height: #{@height}%;"
     if @top_shadow
-      before = "box-shadow: 0 -#{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity});
-               border-radius: #{@radius}%;
+      before = "#{SSC.CSS_BOX_SHADOW}: 0 -#{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity});
+               #{SSC.CSS_BORDER_RADIUS}: #{@radius}%;
                z-index: -1;
                left: #{@left}%;
                top: 0;

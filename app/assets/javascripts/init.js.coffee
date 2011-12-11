@@ -1,5 +1,7 @@
 $(document).ready ->
 
+  SSC.init()
+
   # Shadow properties that can be changed by user.
   properties = ['left', 'right', 'bottom', 'width', 'height', 'radius', 'distance', 'blur', 
                 'xshift', 'yshift', 'opacity', 'skew', 'xorigin', 'yorigin']
