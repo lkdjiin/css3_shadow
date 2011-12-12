@@ -1,7 +1,7 @@
 ################################################################################
-# Representing the state of a lifted corners Shadow.
+# Representing the state of a curled corners Shadow.
 ################################################################################
-class window.LiftedCornersShadow extends window.BaseShadow
+class window.CurledCornersShadow extends window.BaseShadow
 
   constructor: ->
     super()
@@ -15,6 +15,7 @@ class window.LiftedCornersShadow extends window.BaseShadow
     @blur = 10
     @opacity = 0.7
     @rotate = 3
+    @skew = 0
     
     @init()
   
@@ -63,8 +64,14 @@ class window.LiftedCornersShadow extends window.BaseShadow
   # value - Integer.
   set_rotate: (value) ->
     @rotate = value
-    window.sheet_mgr.set SSC.BEFORE, SSC.TRANSFORM, "rotate(-#{value}deg)"
-    window.sheet_mgr.set SSC.AFTER, SSC.TRANSFORM, "rotate(#{value}deg)"
+    window.sheet_mgr.set SSC.BEFORE, SSC.TRANSFORM, "rotate(-#{value}deg) skew(-#{@skew}deg)"
+    window.sheet_mgr.set SSC.AFTER, SSC.TRANSFORM, "rotate(#{value}deg) skew(#{@skew}deg)"
+  
+  # value - Integer.
+  set_skew: (value) ->
+    @skew = value
+    window.sheet_mgr.set SSC.BEFORE, SSC.TRANSFORM, "rotate(-#{@rotate}deg) skew(-#{@skew}deg)"
+    window.sheet_mgr.set SSC.AFTER, SSC.TRANSFORM, "rotate(#{@rotate}deg) skew(#{@skew}deg)"
     
   # Set the UI (sliders, etc.) to tweak the shadow.
   _setup_shadow_part: ->
@@ -76,7 +83,8 @@ class window.LiftedCornersShadow extends window.BaseShadow
     @setup_part("Color Y shift", "yshift", @yshift) +
     @setup_part("Color blur", "blur", @blur) +
     @setup_part("Color opacity", "opacity", @opacity) +
-    @setup_part("Rotate", "rotate", @rotate, 'deg'))
+    @setup_part("Rotate", "rotate", @rotate, 'deg') +
+    @setup_part("Skew", "skew", @skew, 'deg'))
     
   # Set callback methods (mostly on sliders) to know what to do when values
   # changed.
@@ -89,6 +97,7 @@ class window.LiftedCornersShadow extends window.BaseShadow
     @set_slider_callback("blur", 0, 50, @blur)
     @set_slider_callback("opacity", 0, 100, @opacity * 100)
     @set_slider_callback("rotate", 0, 30, @rotate)
+    @set_slider_callback("skew", 0, 50, @skew)
   
   # Display a shadow on the box with default values.
   _display_default_shadow: ->
@@ -99,7 +108,7 @@ class window.LiftedCornersShadow extends window.BaseShadow
              width: #{@width}%;
              height: #{@height}%;
              #{SSC.CSS_BOX_SHADOW}: 0 #{@yshift}px #{@blur}px rgba(0, 0, 0, #{@opacity});
-             #{SSC.CSS_TRANSFORM}: rotate(3deg);
+             #{SSC.CSS_TRANSFORM}: rotate(3deg) skew(0deg);
              "
     before = "z-index: -1;
               bottom: #{@bottom}px;
@@ -107,7 +116,7 @@ class window.LiftedCornersShadow extends window.BaseShadow
               width: #{@width}%;
               height: #{@height}%;
               #{SSC.CSS_BOX_SHADOW}: 0 #{@yshift}px #{@blur}px rgba(0, 0, 0, #{@opacity});
-              #{SSC.CSS_TRANSFORM}: rotate(-3deg);
+              #{SSC.CSS_TRANSFORM}: rotate(-3deg) skew(0deg);
               "
     window.sheet_mgr.insert_after_and_before_rules after, before
     
@@ -132,7 +141,7 @@ class window.LiftedCornersShadow extends window.BaseShadow
     width: #{@width}%;\n
     height: #{@height}%;\n
     #{SSC.CSS_BOX_SHADOW}: 0 #{@yshift}px #{@blur}px rgba(0, 0, 0, #{@opacity});\n
-    #{SSC.CSS_TRANSFORM}: rotate(-#{@rotate}deg);\n
+    #{SSC.CSS_TRANSFORM}: rotate(-#{@rotate}deg) skew(-#{@skew}deg);\n
     }\n"
               
   # Get the CSS code fot the '#box:after'.
@@ -146,5 +155,5 @@ class window.LiftedCornersShadow extends window.BaseShadow
      width: #{@width}%;\n
      height: #{@height}%;\n
      #{SSC.CSS_BOX_SHADOW}: 0 #{@yshift}px #{@blur}px rgba(0, 0, 0, #{@opacity});\n
-     #{SSC.CSS_TRANSFORM}: rotate(#{@rotate}deg);\n
+     #{SSC.CSS_TRANSFORM}: rotate(#{@rotate}deg) skew(#{@skew}deg);\n
      }\n"
