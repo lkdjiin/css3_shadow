@@ -1,10 +1,11 @@
 ################################################################################
 # Base of all Shadow classes.
 ################################################################################
-class window.BaseShadow extends window.Tweakable
+class window.BaseShadow
 
   # Create a new shadow, with all properties reseted.
   constructor: ->
+    Tweakable.apply this
     @_reset_properties()
   
   

@@ -1,10 +1,11 @@
 ################################################################################
 # The box, which will be shadowed.
 ################################################################################
-class window.BoxTweaking extends window.Tweakable
+class window.BoxTweaking
   
   # Create a new box, ready to be tweaked.
   constructor: ->
+    Tweakable.apply this
     @set_slider_callback("box_width", 200, 800, 400, 10)
     @set_slider_callback("box_height", 200, 800, 300, 10)
   
