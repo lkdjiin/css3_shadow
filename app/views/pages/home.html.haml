@@ -5,18 +5,29 @@
     %strong It works in Firefox 8 and Chromium 15
 
 %section#setup
-  %div{id: "setup_type", class: "setup_box"}
-    = render "pages/home/setup_type"
-  %div{id: "tweak_box", class: "setup_box"}
-    = render "pages/home/tweak_box"
-  %div{id:"setup_shadow", class:"setup_box"}
-    = render "pages/home/setup_shadow"
+  #tabs
+    %ul
+      %li
+        %a{href: "#tabs-1"} Shape
+      %li
+        %a{href: "#tabs-2"} Shadows
+      %li
+        %a{href: "#tabs-3"} Box
+    #tabs-1
+      %div{id: "setup_type", class: "setup_box"}
+        = render "pages/home/setup_type"
+    #tabs-2
+      %div{id:"setup_shadow", class:"setup_box"}
+        = render "pages/home/setup_shadow"
+    #tabs-3
+      %div{id: "tweak_box", class: "setup_box"}
+        = render "pages/home/tweak_box"
+
+
 
 %section#box_outer
   %p If you don't see some nice shadows, try with Firefox or Chrome
   #box
-    
-  
 
 %section#code
   %h1 The code
