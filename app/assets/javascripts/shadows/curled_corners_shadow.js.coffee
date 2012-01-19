@@ -18,6 +18,7 @@ class window.CurledCornersShadow extends window.BaseShadow
     @skew = 0
     
     @init()
+    $('#box').css({ borderRadius: "0 0 25% 25% / 0 0 3% 3%" })
   
   # value - Integer.
   set_bottom: (value) ->

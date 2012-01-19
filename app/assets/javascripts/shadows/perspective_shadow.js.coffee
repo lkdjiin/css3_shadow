@@ -26,6 +26,7 @@ class window.PerspectiveShadow extends window.BaseShadow
     @radius = 10
   
     @init()
+    window.box_tweaking.set_default()
   
   
   # value - Integer.

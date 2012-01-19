@@ -18,6 +18,7 @@ class window.VerticalCurveShadow extends window.BaseShadow
     @right = 0
 
     @init()
+    window.box_tweaking.set_default()
 
 
   # value - Integer.

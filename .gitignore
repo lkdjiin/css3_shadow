@@ -18,4 +18,4 @@
 coverage/
 TODO
 webrat.log
-.project
+*.swp

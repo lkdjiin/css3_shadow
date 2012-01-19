@@ -24,6 +24,7 @@ class window.HorizontalCurveShadow extends window.BaseShadow
     @opacity = 0.4
     
     @init()
+    window.box_tweaking.set_default()
   
   
   # value - Integer.
