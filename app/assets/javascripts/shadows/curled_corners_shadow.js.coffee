@@ -136,13 +136,15 @@ class window.CurledCornersShadow extends window.BaseShadow
   # Returns String.
   code_for_box_before: ->
     "#box:before {\n
+    content: '';\n
+    position: absolute;\n
     z-index: -1;\n
     bottom: #{@bottom}px;\n
     left: #{@left}px;\n
     width: #{@width}%;\n
     height: #{@height}%;\n
     #{SSC.CSS_BOX_SHADOW}: 0 #{@yshift}px #{@blur}px rgba(0, 0, 0, #{@opacity});\n
-    #{SSC.CSS_TRANSFORM}: rotate(-#{@rotate}deg) skew(-#{@skew}deg);\n
+    #{@css_code_for_transform('rotate(-' + @rotate + 'deg)' + ' skew(-' + @skew + 'deg)')}
     }\n"
               
   # Get the CSS code fot the '#box:after'.
@@ -150,11 +152,13 @@ class window.CurledCornersShadow extends window.BaseShadow
   # Returns String.
   code_for_box_after: ->
     "#box:after {\n
-     z-index: -1;\n
-     bottom: #{@bottom}px;\n
-     right: #{@right}px;\n
-     width: #{@width}%;\n
-     height: #{@height}%;\n
-     #{SSC.CSS_BOX_SHADOW}: 0 #{@yshift}px #{@blur}px rgba(0, 0, 0, #{@opacity});\n
-     #{SSC.CSS_TRANSFORM}: rotate(#{@rotate}deg) skew(#{@skew}deg);\n
-     }\n"
+    content: '';\n
+    position: absolute;\n
+    z-index: -1;\n
+    bottom: #{@bottom}px;\n
+    right: #{@right}px;\n
+    width: #{@width}%;\n
+    height: #{@height}%;\n
+    #{SSC.CSS_BOX_SHADOW}: 0 #{@yshift}px #{@blur}px rgba(0, 0, 0, #{@opacity});\n
+    #{@css_code_for_transform('rotate(' + @rotate + 'deg)' + ' skew(' + @skew + 'deg)')}
+    }\n"
