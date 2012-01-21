@@ -98,6 +98,7 @@ class window.BoxTweaking
       height: #{$('#value_box_height').html()}px;\n
       background-color: #fff;\n
       box-shadow: 0 1px 5px rgba(0,0,0,0.25), 0 0 50px rgba(0,0,0,0.1) inset;\n
+      border-radius: #{@value_for_border_radius()};\n
     }\n"
   
   set_default: ->
