@@ -43,7 +43,7 @@ class window.ShadowMaker
   #
   # TODO Find a solution to not open this class when adding a new type of shadow.
   shape_changed: ->
-    $('#code pre code div').html('')
+    $('#code pre code').html('')
     $('#setup_shadow').animate({opacity: 0}, 300, 'linear', =>
       @maker = switch $('select#shape').val()
         when 'curved_hz' then new window.HorizontalCurveShadow('both')
@@ -60,7 +60,7 @@ class window.ShadowMaker
   # Displays the code to the user.
   show_code: ->
     code = window.box_tweaking.to_string() + @maker.to_string()
-    $("#code div").html(code)
+    $("#code pre code").html(code)
 
   
   
