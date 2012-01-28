@@ -94,7 +94,7 @@ class window.BoxTweaking
   to_string: ->
     "/* This code is tested with latest versions of\n
     Firefox, Chromium and Opera */\n
-#box {\n
+.box {\n
   position: relative;\n
   width: #{$('#value_box_width').html()}px;\n
   height: #{$('#value_box_height').html()}px;\n

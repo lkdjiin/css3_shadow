@@ -135,7 +135,7 @@ class window.CurledCornersShadow extends window.BaseShadow
   #
   # Returns String.
   code_for_box_before: ->
-    "#box:before {\n
+    ".box:before {\n
     content: '';\n
     position: absolute;\n
     z-index: -1;\n
@@ -151,7 +151,7 @@ class window.CurledCornersShadow extends window.BaseShadow
   #
   # Returns String.
   code_for_box_after: ->
-    "#box:after {\n
+    ".box:after {\n
     content: '';\n
     position: absolute;\n
     z-index: -1;\n

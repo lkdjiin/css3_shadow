@@ -76,7 +76,7 @@ class window.VerticalCurveShadow extends window.BaseShadow
   #
   # Returns String.
   code_for_box_before: ->
-    "#box:before {\n
+    ".box:before {\n
     position: absolute;\n
     width: #{@width}%;\n
     height: #{@height}%;\n

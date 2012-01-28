@@ -130,7 +130,7 @@ class window.HorizontalCurveShadow extends window.BaseShadow
   # Returns String.
   code_for_box_before: ->
     if @top_shadow
-      "#box:before {\n
+      ".box:before {\n
       position: absolute;\n
       width: #{@width}%;\n
       height: #{@height}%;\n
@@ -150,7 +150,7 @@ class window.HorizontalCurveShadow extends window.BaseShadow
   # Returns String.
   code_for_box_after: ->
     if @bottom_shadow
-      "#box:after {\n
+      ".box:after {\n
       position: absolute;\n
       width: #{@width}%;\n
       height: #{@height}%;\n

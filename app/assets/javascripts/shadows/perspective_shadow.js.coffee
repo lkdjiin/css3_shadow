@@ -160,7 +160,7 @@ class window.PerspectiveShadow extends window.BaseShadow
   # Returns String.
   code_for_box_before: ->
     if @subtype is 'left'
-      "#box:before {\n
+      ".box:before {\n
       position: absolute;\n
       left: #{@left}px;\n
       bottom: #{@bottom}px;\n
@@ -174,7 +174,7 @@ class window.PerspectiveShadow extends window.BaseShadow
       #{@css_code_for_transform_origin(@xorigin + '% ' + @yorigin + '%')}
       }\n"
     else
-      "#box:before {\n
+      ".box:before {\n
       position: absolute;\n
       right: #{@right}px;\n
       bottom: #{@bottom}px;\n
