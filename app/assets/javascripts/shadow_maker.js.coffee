@@ -54,6 +54,7 @@ class window.ShadowMaker
         when 'perspective_r' then new window.PerspectiveShadow('right')
         when 'curved_vt' then new window.VerticalCurveShadow()
         when 'basic' then new window.BasicShadow()
+        when 'wrinkled' then new window.WrinkledShadow()
       $('#setup_shadow').animate({opacity: 1})
     )
     
