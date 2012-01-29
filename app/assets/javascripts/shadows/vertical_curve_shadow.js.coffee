@@ -1,5 +1,5 @@
 ################################################################################
-# Representing the state of an Vertical Curved Shadow.
+# Representing the state of a Vertical Curved Shadow.
 ################################################################################
 class window.VerticalCurveShadow extends window.BaseShadow
 
