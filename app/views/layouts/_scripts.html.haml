@@ -1,11 +1,13 @@
-%link{ href: "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css", 
-       type:"text/css", 
-       rel:"stylesheet" }
-       
-%link{ href: "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/sunny/jquery-ui.css", 
-       type:"text/css", 
-       rel:"stylesheet" }
+- unless @title == base_title
+  %link{ href: "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css", 
+         type:"text/css", 
+         rel:"stylesheet" }
+         
+  %link{ href: "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/sunny/jquery-ui.css", 
+         type:"text/css", 
+         rel:"stylesheet" }
 
 = stylesheet_link_tag    "application"       
 
-= javascript_include_tag "application"
+- unless @title == base_title
+  = javascript_include_tag "application"
