@@ -91,6 +91,38 @@ header, footer
 .application_centered
   margin: 0 20px
 
+// HOME PAGE
+//------------------------------------------------------------------------------
+#advertise
+  display: none
+
+@media (max-width: 1180px)
+  #advertise
+    display: block
+    background-color: #ff5050
+    color: #500
+    font-size: 1.5em
+    padding: 5%
+  
+#doc
+  text-align: center
+  h2
+    background-color: $second-color
+    color: white
+    line-height: 32px
+    height: 32px
+    border-radius: 5px
+    margin: 15px 25%
+    padding: 5px
+    font-size: 26px
+  img
+    border: 10px solid lighten($second-color, 30%)
+    border-radius: 5px
+    margin-bottom: 25px
+  a.last
+    font-size: 32px
+    line-height: 72px
+
 
 // SETUP BOXES
 //------------------------------------------------------------------------------

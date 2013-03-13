@@ -1,100 +1,12 @@
-#top
-  %p
-    = image_tag "ff32x32.png"
-    = image_tag "chromium32x32.png"
-    %strong It works in Firefox and Chromium
-    = image_tag "safari32x32.png"
-    It should works in Safari
 
-%section#setup
-  #tabs
-    %ul
-      %li
-        %a{href: "#tabs-1"} Shape
-      %li
-        %a{href: "#tabs-2"} Shadows
-      %li
-        %a{href: "#tabs-3"} Box
-    #tabs-1
-      %div{id: "setup_type", class: "setup_box"}
-        = render "pages/home/setup_type"
-    #tabs-2
-      %div{id:"setup_shadow", class:"setup_box"}
-        = render "pages/home/setup_shadow"
-    #tabs-3
-      %div{id: "tweak_box", class: "setup_box"}
-        = render "pages/home/tweak_box"
-
-
-
-%section#box_outer
-  %p If you don't see some nice shadows, try with Firefox or Chrome
-  #box
-
-%section#code
-  %h1 The code
-  %button{ onclick: "window.maker.show_code()"} 
-    (Re)generate Code
-  %pre
-    %code
-
-%section#about
-  %h1 About
-  %p
-    %strong Welcome to CSS3 Drop Shadows, a web application to build nice CSS3 box shadows:
-  %ul
-    %li
-      <strong>Open Source</strong>, released under the 
-      #{link_to "GNU Public License v3", "http://www.gnu.org/copyleft/gpl.html"}
-    %li
-      #{link_to "Fork me", "https://github.com/lkdjiin/css3_shadow"} on <strong>GitHub</strong>
-    %li
-      Report a <strong>bug</strong> / request a <strong>feature</strong> on 
-      #{link_to "GitHub issues", "https://github.com/lkdjiin/css3_shadow/issues"}
-    %li
-      #{link_to "Follow me", "twitter.com/lkdjiin"} on <strong>Twitter</strong>
-    %li
-      Feel free to #{mail_to "xavier.nayrac@gmail.com", "email me", :encode => "javascript"} 
-      with any questions
-
-%section#todo
-  %h1 Todo
-  %p 
-    %strong In no particular order:
-  %ul
-    %li Setup of the box (color, etc.)
-    %li 
-      Add many type of shadows
-    %li Test in many browsers
-    %li Do a Help Page
-    %li Do a Comments Page
-    %li Produce sass, scss and less code
-    %li Code syntax highlight
-    %li add a button to copy code to clipboard
-    %li storing setups with webstorage
-    %li An A &lt;-&gt; B comparison system
-
-%section#history
-  %h1 History
-
-  %h2 v0.4 (2012-01-30)
-  %ul
-    %li Add basic shadow
-    %li Add wrinkled shadow
-  
-  %h2 v0.3 (2012-01-21)
-  %ul
-    %li Add curled corners shadow
-    %li Generated CSS code is tested on Firefox, Chromium and Opera
-    %li New setup interface
-    %li Customization of the box
-  
-  %h2 v0.2 (2011-12-10)
-  %ul
-    %li Add a right perspective shadow
-    %li Chrome support
-  
-  %h2 v0.1.1 (2011-12-05)
-  %ul
-    %li First public release
-    
+#doc
+  %h2 1. Choose a shadow
+  = image_tag "css3-first.jpg"
+  %h2 2. Tweak the shadow and/or the box
+  = image_tag "css3-second.jpg"
+  %h2 3. View changes in real time
+  = image_tag "css3-third.jpg"
+  %h2 4. (Re)generate the css code
+  = image_tag "css3-fourth.jpg"
+  %h2 5. Start designing now
+  = link_to "Go to app", app_path, class: "last"

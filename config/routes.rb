@@ -1,9 +1,9 @@
 Css3Shadow::Application.routes.draw do
 
-  get "pages/help"
+  match "/app", to: "pages#app"
+  match "/about", to: "pages#about"
+  match "/todo", to: "pages#todo"
 
-  get "pages/comments"
-
-  root :to => 'pages#home'
+  root to: 'pages#home'
   
 end
