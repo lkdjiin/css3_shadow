@@ -18,24 +18,9 @@
       %p
         I am really sorry but this site is not mobile friendly.
         You should better use it with a wide screen.
-    %header
-      .application_centered
-        %h1 CSS3 Drop Shadows Generator
-        %nav
-          %ul
-            %li= link_to "home", root_path
-            %li= link_to "app", app_path
-            %li= link_to "about", about_path
-            %li= link_to "todo", todo_path
-        #slogan For designers - For learning CSS3 - To try some experiments
+    = render 'layouts/header'
 
-    %div{id: "main_content", class: "application_centered"}
+    #main_content.application_centered
       = yield
 
-    %footer
-      %p Xavier Nayrac, 2011-2013
-      %p GNU General Public License v3
-      #thanks
-        powered by #{link_to "ruby on rails", "http://rubyonrails.org/"} -
-        hosted on #{link_to "heroku", "http://www.heroku.com/"}
-        
+    = render 'layouts/footer'

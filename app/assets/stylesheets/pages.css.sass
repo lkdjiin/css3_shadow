@@ -19,10 +19,10 @@ body
 a
   color: #4D4D80
   font-weight: bold
-  
+
 h1
   font-size: 30px
-  
+
 header
   padding-top: 10px
   background-color: $front-color
@@ -38,6 +38,9 @@ header
     margin-right: 100px
     span
       color: $second-color
+  h1.brand a
+    font-weight: normal
+    text-decoration: none
   nav
     ul
       text-align: right
@@ -47,13 +50,15 @@ header
           text-decoration: none
           font-size: 20px
           font-weight: bold
-          
+      li.active a, a:hover
+        border-bottom: 4px solid rgba(255,255,255,0.3)
   #slogan
     color: $second-color
     font-size: 16px
     margin-left: 10px
     letter-spacing: 0.2em
     text-shadow: 0 0 10px rgba(255,255,255,0.5)
+
 
 p
   margin-bottom: 10px
@@ -76,10 +81,11 @@ p
   border-radius: 5px
   margin: 5px 0
   padding: 5px
-  img
-    width: 32px
-    height: 32px
-    vertical-align: middle
+  p
+    font-size: 20px
+    text-transform: uppercase
+    margin-bottom: 60px
+    text-align: center
   
 // SHARED
 //------------------------------------------------------------------------------
@@ -148,18 +154,12 @@ section#setup
   border: 1px solid #ccc
   margin-top: 5px
   border-radius: 5px
-  padding: 30px 100px 100px 100px
+  padding: 100px 100px 100px 100px
   background-color: #fcfcfc
   position: relative
   z-index: -99
   margin-left: $section-setup-size + 5px
   
-  p
-    font-size: 20px
-    text-transform: uppercase
-    margin-bottom: 60px
-    text-align: center
-    color: $second-color
 
 #box 
   width: 400px
