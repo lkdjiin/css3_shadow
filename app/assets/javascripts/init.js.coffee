@@ -11,7 +11,7 @@ $(document).ready ->
   window.box_tweaking = new window.BoxTweaking()
   window.maker = new window.ShadowMaker(properties)
   
-  $('button').button({ icons: { primary: "ui-icon-gear" } })
+  $('button').button()
 
   $('#tabs').tabs()
   

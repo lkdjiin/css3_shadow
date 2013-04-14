@@ -24,7 +24,7 @@ class window.BaseShadow
   setup_part: (label, property, initial_value, unit) ->
     unit = '%' if unit is undefined
     "<h2>#{label} <span id='value_#{property}'>#{initial_value}</span>#{unit}</h2>
-     <div id='slider_#{property}'></div>"
+     <div id='slider_#{property}' class='yellow'></div>"
   
   
   # Get HTML code for the sublayer checkbox (a special case of #setup_part).
