@@ -20,7 +20,6 @@ end
 
 group :test do
   gem 'webrat', '0.7.3'
-  gem 'coco', '0.6'
 end
 
 # Gems used only for assets and not required
