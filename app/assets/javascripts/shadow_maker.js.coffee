@@ -10,7 +10,7 @@ class window.ShadowMaker
   constructor: (properties)->
     @maker = new window.HorizontalCurveShadow('both')
     @create_changer(prop) for prop in properties
-    
+
 
   # Create the callback method for a property that can be changed by user.
   # 
@@ -30,14 +30,14 @@ class window.ShadowMaker
       eval("this.maker.set_#{property}(value);")
       eval("$(\"#value_#{property}\").html(value);")
 
-      
+
   # Callback, when the 'sublayer' checkbox have changed.
   # If it is checked, we display all the underlying stuff to the user.
   sublayer_changed: ->
     value = if $("#value_index").is(":checked") then "1" else "-1"
     window.sheet_mgr.set_after_and_before "zIndex", value
-  
-  
+
+
   # Callback, when the user change the shadow shape.
   # Performs some transition animation too.
   #
@@ -57,12 +57,19 @@ class window.ShadowMaker
         when 'wrinkled' then new window.WrinkledShadow()
       $('#setup_shadow').animate({opacity: 1})
     )
-    
+
 
   # Displays the code to the user.
   show_code: ->
-    code = window.box_tweaking.to_string() + @maker.to_string()
-    $("#code pre code").html(code)
+    @show_css_code()
+    @show_sass_code()
 
-  
-  
+  show_css_code: ->
+    code = window.box_tweaking.to_string() + @maker.to_string()
+    $("#code-tabs-1 pre code").html(code)
+    
+  show_sass_code: ->
+    code = "// Warning! This SASS output is a beta version.\n
+// Please reports any bug on https://github.com/lkdjiin/css3_shadow/issues\n\n"
+    code += window.box_tweaking.to_sass() + @maker.to_sass()
+    $("#code-tabs-2 pre code").html(code)

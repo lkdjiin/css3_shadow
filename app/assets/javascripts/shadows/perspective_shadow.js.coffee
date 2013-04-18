@@ -142,8 +142,8 @@ class window.PerspectiveShadow extends window.BaseShadow
                  #{SSC.CSS_TRANSFORM}: skew(-#{@skew}deg);
                  #{SSC.CSS_BORDER_RADIUS}: 0 #{@radius}% 0 0;"
     window.sheet_mgr.insert_after_and_before_rules after, before
-    
-  
+
+
   # The CSS 'box-shadow' value for 'box:before'.
   #
   # Returns String.
@@ -153,8 +153,8 @@ class window.PerspectiveShadow extends window.BaseShadow
       "-#{@xshift}px 0 #{@blur}px rgba(0,0,0,#{@opacity})"
     else
       "#{@xshift}px 0 #{@blur}px rgba(0,0,0,#{@opacity})"
-  
-  
+
+
   # Get the CSS code fot the '#box:before'.
   #
   # Returns String.
@@ -187,8 +187,44 @@ class window.PerspectiveShadow extends window.BaseShadow
       #{@css_code_for_transform('skew(-' + @skew + 'deg)')}
       #{@css_code_for_transform_origin(@xorigin + '% ' + @yorigin + '%')}
       }\n"
-  
+
+  # Get the SASS code fot the '#box:before'.
+  #
+  # Returns String.
+  sass_for_box_before: ->
+    if @subtype is 'left'
+      ".box:before\n
+  position: absolute\n
+  left: #{@left}px\n
+  bottom: #{@bottom}px\n
+  width: #{@width}%\n
+  height: #{@height}%\n
+  border-radius: #{@radius}% 0 0 0\n
+  z-index: -1\n
+  content: \"\"\n
+  box-shadow: #{@_color_for_before()}\n
+  #{@sass_code_for_transform('skew(' + @skew + 'deg)')}
+  #{@sass_code_for_transform_origin(@xorigin + '% ' + @yorigin + '%')}\n"
+    else
+      ".box:before\n
+  position: absolute\n
+  right: #{@right}px\n
+  bottom: #{@bottom}px\n
+  width: #{@width}%\n
+  height: #{@height}%\n
+  border-radius: 0 #{@radius}% 0 0\n
+  z-index: -1\n
+  content: \"\"\n
+  box-shadow: #{@_color_for_before()}\n
+  #{@sass_code_for_transform('skew(-' + @skew + 'deg)')}
+  #{@sass_code_for_transform_origin(@xorigin + '% ' + @yorigin + '%')}\n"
+
   # The CSS 'box-shadow' value for 'box:after'.
   #
   # Returns String.
   code_for_box_after: -> ""
+
+  # The SASS 'box-shadow' value for 'box:after'.
+  #
+  # Returns String.
+  sass_for_box_after: -> ""

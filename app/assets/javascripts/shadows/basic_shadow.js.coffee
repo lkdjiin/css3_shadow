@@ -6,7 +6,7 @@ class window.BasicShadow extends window.BaseShadow
   # Create a simple shadow at top left.
   constructor: ->
     super()
-    
+
     @top = 0
     @left = 0
     @width = 33
@@ -27,7 +27,7 @@ class window.BasicShadow extends window.BaseShadow
   set_width: (value) ->
     @width = value
     window.sheet_mgr.set SSC.BEFORE, "width", "#{@width}%"
-  
+
   # value - Integer.
   set_height: (value) ->
     @height = value
@@ -47,42 +47,42 @@ class window.BasicShadow extends window.BaseShadow
   set_blur: (value) ->
     @blur = value
     window.sheet_mgr.set SSC.BEFORE, SSC.BOX_SHADOW, @_color_for_before()
-      
+
   # value - Integer.
   set_xshift: (value) ->
     @xshift = value
     window.sheet_mgr.set SSC.BEFORE, SSC.BOX_SHADOW, @_color_for_before()
-  
+
   # value - Integer.
   set_yshift: (value) ->
     @yshift = value
     window.sheet_mgr.set SSC.BEFORE, SSC.BOX_SHADOW, @_color_for_before()
-  
+
   # value - Integer.
   set_opacity: (value) ->
     @opacity = value / 100
     window.sheet_mgr.set SSC.BEFORE, SSC.BOX_SHADOW, @_color_for_before()
-  
+
   # value - Integer.
   set_skew: (value) ->
     @skew = value
     window.sheet_mgr.set SSC.BEFORE, SSC.TRANSFORM, @_transform_for_before()
-  
+
   # value - Integer.
   set_rotate: (value) ->
     @rotate = value
     window.sheet_mgr.set SSC.BEFORE, SSC.TRANSFORM, @_transform_for_before()
-  
+
   # value - Integer.
   set_xtranslate: (value) ->
     @xtranslate = value
     window.sheet_mgr.set SSC.BEFORE, SSC.TRANSFORM, @_transform_for_before()
-  
+
   # value - Integer.
   set_ytranslate: (value) ->
     @ytranslate = value
     window.sheet_mgr.set SSC.BEFORE, SSC.TRANSFORM, @_transform_for_before()
-  
+
   # Set the UI (sliders, etc.) to tweak the shadow.
   _setup_shadow_part: ->
     (@setup_part_sublayer() +
@@ -166,7 +166,29 @@ class window.BasicShadow extends window.BaseShadow
     #{tr}
     }\n"
 
+  # Get the SASS code fot the '#box:before'.
+  #
+  # Returns String.
+  sass_for_box_before: ->
+    tmp = @_transform_for_before()
+    tr = @sass_code_for_transform(tmp)
+    ".box:before\n
+  position: absolute\n
+  z-index: -1\n
+  content: \"\"\n
+  top: #{@top}px\n
+  left: #{@left}px\n
+  width: #{@width}%\n
+  height: #{@height}%\n
+  box-shadow: #{@_color_for_before()}\n
+  #{tr}\n"
+
   # The CSS 'box-shadow' value for 'box:after'.
   #
   # Returns String.
   code_for_box_after: -> ""
+
+  # The SASS 'box-shadow' value for 'box:after'.
+  #
+  # Returns String.
+  sass_for_box_after: -> ""

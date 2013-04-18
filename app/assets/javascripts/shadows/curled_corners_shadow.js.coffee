@@ -120,17 +120,17 @@ class window.CurledCornersShadow extends window.BaseShadow
               #{SSC.CSS_TRANSFORM}: rotate(-3deg) skew(0deg);
               "
     window.sheet_mgr.insert_after_and_before_rules after, before
-    
+
   # The CSS 'box-shadow' value for 'box:before'.
   #
   # Returns String.
   _color_for_before: -> "0 #{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity})"
-    
+
   # The CSS 'box-shadow' value for 'box:after'.
   #
   # Returns String.
   _color_for_after: -> "0 #{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity})"
-  
+
   # Get the CSS code fot the '#box:before'.
   #
   # Returns String.
@@ -146,7 +146,22 @@ class window.CurledCornersShadow extends window.BaseShadow
     #{SSC.CSS_BOX_SHADOW}: 0 #{@yshift}px #{@blur}px rgba(0, 0, 0, #{@opacity});\n
     #{@css_code_for_transform('rotate(-' + @rotate + 'deg)' + ' skew(-' + @skew + 'deg)')}
     }\n"
-              
+
+  # Get the SASS code fot the '#box:before'.
+  #
+  # Returns String.
+  sass_for_box_before: ->
+    ".box:before\n
+  content: ''\n
+  position: absolute\n
+  z-index: -1\n
+  bottom: #{@bottom}px\n
+  left: #{@left}px\n
+  width: #{@width}%\n
+  height: #{@height}%\n
+  #{SSC.CSS_BOX_SHADOW}: 0 #{@yshift}px #{@blur}px rgba(0, 0, 0, #{@opacity})\n
+  #{@sass_code_for_transform('rotate(-' + @rotate + 'deg)' + ' skew(-' + @skew + 'deg)')}\n"
+
   # Get the CSS code fot the '#box:after'.
   #
   # Returns String.
@@ -162,3 +177,18 @@ class window.CurledCornersShadow extends window.BaseShadow
     #{SSC.CSS_BOX_SHADOW}: 0 #{@yshift}px #{@blur}px rgba(0, 0, 0, #{@opacity});\n
     #{@css_code_for_transform('rotate(' + @rotate + 'deg)' + ' skew(' + @skew + 'deg)')}
     }\n"
+
+  # Get the SASS code fot the '#box:after'.
+  #
+  # Returns String.
+  sass_for_box_after: ->
+    ".box:after\n
+  content: ''\n
+  position: absolute\n
+  z-index: -1\n
+  bottom: #{@bottom}px\n
+  right: #{@right}px\n
+  width: #{@width}%\n
+  height: #{@height}%\n
+  #{SSC.CSS_BOX_SHADOW}: 0 #{@yshift}px #{@blur}px rgba(0, 0, 0, #{@opacity})\n
+  #{@sass_code_for_transform('rotate(' + @rotate + 'deg)' + ' skew(' + @skew + 'deg)')}\n"

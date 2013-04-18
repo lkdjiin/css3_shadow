@@ -72,21 +72,21 @@ class window.BoxTweaking
   box_top_right_vt_changed: (value) ->
     @top_right_vt = value
     @update_radius_UI('top_right_vt', value)
-    
+
   # value - Integer.
   box_bottom_right_vt_changed: (value) ->
     @bottom_right_vt = value
     @update_radius_UI('bottom_right_vt', value)
-  
+
   # value - Integer.
   box_bottom_left_vt_changed: (value) ->
     @bottom_left_vt = value
     @update_radius_UI('bottom_left_vt', value)
-    
+
   update_radius_UI: (corner, value) ->
     $("#box").css({ borderRadius: @value_for_border_radius() })
     $("#value_box_#{corner}").html(value)
-    
+
   # Get CSS code of the shadowed box. Not all code! Just the box (not the 
   # :before and :after parts).
   #
@@ -102,11 +102,25 @@ class window.BoxTweaking
   box-shadow: 0 1px 5px rgba(0,0,0,0.25), 0 0 50px rgba(0,0,0,0.1) inset;\n
   border-radius: #{@value_for_border_radius()};\n
 }\n"
+
+  # Get SASS code of the shadowed box. Not all code! Just the box (not the 
+  # :before and :after parts).
+  #
+  # Returns String.
+  to_sass: ->
+    ".box\n
+  position: relative\n
+  width: #{$('#value_box_width').html()}px\n
+  height: #{$('#value_box_height').html()}px\n
+  background-color: #fff\n
+  box-shadow: 0 1px 5px rgba(0,0,0,0.25), 0 0 50px rgba(0,0,0,0.1) inset\n
+  border-radius: #{@value_for_border_radius()}\n\n"
   
+
   # Set default border-radius of the box
   set_default: ->
     @set_radius(1,1,1,1,1,1,1,1)
-    
+
   # Set border-radius of the box
   #
   # htl - Integer horizontal top left value of the radius

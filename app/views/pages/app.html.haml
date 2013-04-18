@@ -29,6 +29,16 @@
   %h1 The code
   %button{ onclick: "window.maker.show_code()", class: "ui-button-blue"} 
     (Re)generate Code
-  %pre
-    %code
+  #code-tabs
+    %ul
+      %li
+        %a{href: "#code-tabs-1"} CSS
+      %li
+        %a{href: "#code-tabs-2"} SASS
+    #code-tabs-1
+      %pre
+        %code
+    #code-tabs-2
+      %pre
+        %code
 

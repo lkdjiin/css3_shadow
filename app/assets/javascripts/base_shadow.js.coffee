@@ -56,6 +56,16 @@ class window.BaseShadow
     code = @code_for_box_before()
     code += @code_for_box_after()
   
+  # Get the SASS code for this particular shadow effect.
+  #
+  # Note sass_for_box_before() and sass_for_box_after() must be 
+  # defined in childs.
+  #
+  # Returns String.
+  to_sass: ->
+    code = @sass_for_box_before()
+    code += @sass_for_box_after()
+  
   init: ->
     @set_the_UI()
     @_set_callbacks()
@@ -67,6 +77,9 @@ class window.BaseShadow
      -ms-transform: #{value};\n
      -o-transform: #{value};\n
      transform: #{value};\n"
+
+  sass_code_for_transform: (value) ->
+    "transform: #{value}\n"
   
   css_code_for_transform_origin: (value) ->
     "-webkit-transform-origin: #{value};\n
@@ -74,3 +87,6 @@ class window.BaseShadow
      -ms-transform-origin: #{value};\n
      -o-transform-origin: #{value};\n
      transform-origin: #{value};\n"
+  
+  sass_code_for_transform_origin: (value) ->
+    "transform-origin: #{value};\n"

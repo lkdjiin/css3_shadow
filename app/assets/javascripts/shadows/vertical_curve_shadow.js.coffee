@@ -70,8 +70,8 @@ class window.VerticalCurveShadow extends window.BaseShadow
              width: 100%;
              height: #{@height}%;"
     window.sheet_mgr.insert_after_and_before_rules after, before
-  
-  
+
+
   # Get the CSS code fot the '#box:before'.
   #
   # Returns String.
@@ -87,12 +87,32 @@ class window.VerticalCurveShadow extends window.BaseShadow
     content: \"\";\n
     box-shadow: #{@_color_for_before()};\n
     }\n"
-  
+
+  # Get the SASS code fot the '#box:before'.
+  #
+  # Returns String.
+  sass_for_box_before: ->
+    ".box:before\n
+  position: absolute\n
+  width: #{@width}%\n
+  height: #{@height}%\n
+  border-radius: 10px / 100px\n
+  z-index: -1\n
+  top: #{@top}%\n
+  bottom: #{@bottom}%\n
+  content: \"\"\n
+  box-shadow: #{@_color_for_before()}\n"
+
   # The CSS 'box-shadow' value for 'box:after'.
   #
   # Returns String.
   code_for_box_after: -> ""
-  
+
+  # The SASS 'box-shadow' value for 'box:after'.
+  #
+  # Returns String.
+  sass_for_box_after: -> ""
+
   # The CSS 'box-shadow' value for 'box:before'.
   #
   # Returns String.

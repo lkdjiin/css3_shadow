@@ -70,15 +70,15 @@ class window.HorizontalCurveShadow extends window.BaseShadow
     @yshift = value
     window.sheet_mgr.set SSC.BEFORE, SSC.BOX_SHADOW, @_color_for_before()
     window.sheet_mgr.set SSC.AFTER, SSC.BOX_SHADOW, @_color_for_after()
-  
-  
+
+
   # value - Integer.
   set_opacity: (value) ->
     @opacity = value / 100
     window.sheet_mgr.set SSC.BEFORE, SSC.BOX_SHADOW, @_color_for_before()
     window.sheet_mgr.set SSC.AFTER, SSC.BOX_SHADOW, @_color_for_after()
-    
-  
+
+
   # Set the UI (sliders, etc.) to tweak the shadow.
   _setup_shadow_part: ->
     (@setup_part_sublayer() +
@@ -89,8 +89,8 @@ class window.HorizontalCurveShadow extends window.BaseShadow
     @setup_part("Color blur", "blur", @blur) +
     @setup_part("Color Y shift", "yshift", @yshift) +
     @setup_part("Color opacity", "opacity", @opacity) )
-  
-  
+
+
   # Set callback methods (mostly on sliders) to know what to do when values
   # changed.
   _set_callbacks: ->
@@ -124,7 +124,7 @@ class window.HorizontalCurveShadow extends window.BaseShadow
                width: #{@width}%;
                height: #{@height}%;"
     window.sheet_mgr.insert_after_and_before_rules after, before
-      
+
   # Get the CSS code fot the '#box:before'.
   #
   # Returns String.
@@ -144,6 +144,23 @@ class window.HorizontalCurveShadow extends window.BaseShadow
     else
       ""
 
+  # Get the SASS code fot the '#box:before'.
+  #
+  # Returns String.
+  sass_for_box_before: ->
+    if @top_shadow
+      ".box:before\n
+  position: absolute\n
+  width: #{@width}%\n
+  height: #{@height}%\n
+  left: #{@left}%\n
+  border-radius: #{@radius}%\n
+  z-index: -1\n
+  top: #{@distance}%\n
+  content: \"\"\n
+  box-shadow: 0 -#{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity})\n"
+    else
+      ""
 
   # Get the CSS code fot the '#box:after'.
   #
@@ -164,13 +181,31 @@ class window.HorizontalCurveShadow extends window.BaseShadow
     else
       ""
 
+  # Get the SASS code fot the '#box:after'.
+  #
+  # Returns String.
+  sass_for_box_after: ->
+    if @bottom_shadow
+      ".box:after\n
+  position: absolute\n
+  width: #{@width}%\n
+  height: #{@height}%\n
+  left: #{@left}%\n
+  border-radius: #{@radius}%\n
+  z-index: -1\n
+  bottom: #{@distance}%\n
+  content: \"\"\n
+  box-shadow: 0 #{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity})\n"
+    else
+      ""
+
   # The CSS 'box-shadow' value for 'box:before'.
   #
   # Returns String.
   _color_for_before: -> "0 -#{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity})"
-    
+
   # The CSS 'box-shadow' value for 'box:after'.
   #
   # Returns String.
   _color_for_after: -> "0 #{@yshift}px #{@blur}px rgba(0,0,0,#{@opacity})"
-    
+

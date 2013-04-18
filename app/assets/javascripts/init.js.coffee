@@ -14,5 +14,6 @@ $(document).ready ->
   $('button').button()
 
   $('#tabs').tabs()
+  $('#code-tabs').tabs()
   
   

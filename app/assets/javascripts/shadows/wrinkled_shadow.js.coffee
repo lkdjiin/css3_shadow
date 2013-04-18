@@ -176,6 +176,24 @@ class window.WrinkledShadow extends window.BaseShadow
     #{tr}
     }\n"
 
+  # Get the SASS code fot the '#box:before'.
+  #
+  # Returns String.
+  sass_for_box_before: ->
+    tmp = @_transform_for_before()
+    tr = @sass_code_for_transform(tmp)
+    ".box:before\n
+  position: absolute\n
+  z-index: -1\n
+  content: \"\"\n
+  top: #{@top}px\n
+  right: #{@right}px\n
+  width: #{@width}%\n
+  height: #{@height}%\n
+  border-radius: 0 #{@radius}% 0 0\n
+  box-shadow: #{@_color_for_before()}\n
+  #{tr}\n"
+
   # Get the CSS code fot the '#box:after'.
   #
   # Returns String.
@@ -194,4 +212,22 @@ class window.WrinkledShadow extends window.BaseShadow
     box-shadow: #{@_color_for_after()};\n
     #{tr}
     }\n"
+
+  # Get the SASS code fot the '#box:after'.
+  #
+  # Returns String.
+  sass_for_box_after: ->
+    tmp = @_transform_for_after()
+    tr = @sass_code_for_transform(tmp)
+    ".box:after\n
+  position: absolute\n
+  z-index: -1\n
+  content: \"\"\n
+  top: #{@top}px\n
+  left: #{@right}px\n
+  width: #{@width}%\n
+  height: #{@height}%\n
+  border-radius: #{@radius}% 0 0 0\n
+  box-shadow: #{@_color_for_after()}\n
+  #{tr}\n"
 
