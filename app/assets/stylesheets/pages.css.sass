@@ -4,7 +4,7 @@
 $front-color: #484040
 $second-color: #9F998A
 $header-height: 80px
-$section-setup-size: 600px
+$section-setup-size: 500px
 
 // GENERAL
 //------------------------------------------------------------------------------
@@ -215,14 +215,18 @@ footer
   clear: both
   padding: 10px 20px
   margin-top: 50px
-  #thanks, #thanks a
+  #thanks, a
     color: $second-color
+  a
+    text-decoration: none
+    &:hover
+      text-decoration: underline
     
 
 // SECTIONS
 //------------------------------------------------------------------------------
 #code, #about, #todo, #history, #social
-  margin-top: 50px
+  margin-top: 20px
   h1
     padding-bottom: 10px
     border-bottom: 1px solid $front-color

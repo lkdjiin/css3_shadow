@@ -8,8 +8,7 @@ module ApplicationHelper
     pages = {
       "home" => root_path,
       "app" => app_path,
-      "about" => about_path,
-      "todo" => todo_path
+      "about" => about_path
     }
     pages.map do |key, value|
       classnames = %( class="active") if controller.action_name == key
