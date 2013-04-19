@@ -176,12 +176,29 @@ section#setup
   position: absolute
   content: ""
         
+// SOCIAL
+//------------------------------------------------------------------------------
+section#social
+  float: right
+  width: 20%
+  padding-left: 5%
+  p
+    margin-top: 15px
+  p.trello
+    img
+      margin-right: 5px
+      margin-bottom: 3px
+      vertical-align: middle
+
+
 
 // THE CODE
 //------------------------------------------------------------------------------
 
 section#code
-  clear: both
+  // clear: both
+  float: left
+  width: 74%
   pre
     margin-top: 30px
     background-color: #f8f8f8
@@ -195,6 +212,7 @@ section#code
 // FOOTER
 //------------------------------------------------------------------------------
 footer
+  clear: both
   padding: 10px 20px
   margin-top: 50px
   #thanks, #thanks a
@@ -203,7 +221,7 @@ footer
 
 // SECTIONS
 //------------------------------------------------------------------------------
-#code, #about, #todo, #history
+#code, #about, #todo, #history, #social
   margin-top: 50px
   h1
     padding-bottom: 10px
