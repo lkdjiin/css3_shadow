@@ -8,6 +8,7 @@ module ApplicationHelper
     pages = {
       "home" => root_path,
       "app" => app_path,
+      "comments" => comments_path,
       "about" => about_path
     }
     pages.map do |key, value|

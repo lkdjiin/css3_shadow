@@ -15,4 +15,8 @@ class PagesController < ApplicationController
     @title = "#{base_title} - Application"
   end
 
+  def comments
+    @title = "#{base_title} - Comments"
+  end
+
 end
