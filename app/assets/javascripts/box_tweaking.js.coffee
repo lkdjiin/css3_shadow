@@ -92,8 +92,7 @@ class window.BoxTweaking
   #
   # Returns String.
   to_string: ->
-    "/* This code is tested with latest versions of\n
-    Firefox, Chromium and Opera */\n
+    "/* This code is tested with latest version of Firefox and Chrome */\n
 .box {\n
   position: relative;\n
   width: #{$('#value_box_width').html()}px;\n

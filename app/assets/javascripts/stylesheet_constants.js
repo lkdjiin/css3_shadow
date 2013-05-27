@@ -60,7 +60,7 @@ var SSC = (function() {
     
     BORDER_RADIUS: "borderRadius",
     CSS_BORDER_RADIUS: "border-radius",
-    
+
     /*
      * Initialize constants for "vendor properties".
      */
@@ -80,6 +80,7 @@ var SSC = (function() {
       SSC.BORDER_RADIUS = get_supported_prop(['borderRadius', 'MozBorderRadius', 
                                               'WebkitBorderRadius']);
       SSC.CSS_BORDER_RADIUS = js2css_property( SSC.BORDER_RADIUS );
+
     }
   };
   

@@ -1,6 +1,6 @@
-################################################################################
-# Representing the state of a Basic Shadow.
-################################################################################
+########################################################################
+# The state of a Basic Shadow.
+########################################################################
 class window.BasicShadow extends window.BaseShadow
 
   # Create a simple shadow at top left.
@@ -148,7 +148,7 @@ class window.BasicShadow extends window.BaseShadow
     sk = "skew(#{@skew}deg)"
     "#{ro} #{tr} #{sk}"
 
-  # Get the CSS code fot the '#box:before'.
+  # Get the CSS code for the '#box:before'.
   #
   # Returns String.
   code_for_box_before: ->
@@ -166,7 +166,7 @@ class window.BasicShadow extends window.BaseShadow
     #{tr}
     }\n"
 
-  # Get the SASS code fot the '#box:before'.
+  # Get the SASS code for the '#box:before'.
   #
   # Returns String.
   sass_for_box_before: ->

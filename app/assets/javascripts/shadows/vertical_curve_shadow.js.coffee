@@ -1,6 +1,6 @@
-################################################################################
-# Representing the state of a Vertical Curved Shadow.
-################################################################################
+########################################################################
+# The state of a Vertical Curved Shadow.
+########################################################################
 class window.VerticalCurveShadow extends window.BaseShadow
 
   # Create a new shadow with two vertical curves, left and right.

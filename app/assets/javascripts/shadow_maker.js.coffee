@@ -56,6 +56,7 @@ class window.ShadowMaker
         when 'curved_vt' then new window.VerticalCurveShadow()
         when 'basic' then new window.BasicShadow()
         when 'wrinkled' then new window.WrinkledShadow()
+        when 'see_through_tape' then new window.SeeThroughTapeShadow()
       $('#setup_shadow').animate({opacity: 1})
     )
 
