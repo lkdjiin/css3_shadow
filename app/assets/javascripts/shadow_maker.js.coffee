@@ -11,6 +11,7 @@ class window.ShadowMaker
     @maker = new window.HorizontalCurveShadow('both')
     @create_changer(prop) for prop in properties
 
+  sanity: -> true
 
   # Create the callback method for a property that can be changed by user.
   # 

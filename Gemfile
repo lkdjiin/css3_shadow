@@ -12,10 +12,11 @@ end
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails', '2.7.0'
+  gem "jasminerice", :git => 'https://github.com/bradphelan/jasminerice.git'
 end
 
 group :development do
-  gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
+  gem 'annotate'
 end
 
 group :test do

@@ -1,6 +1,6 @@
-################################################################################
+########################################################################
 # Base of all Shadow classes.
-################################################################################
+########################################################################
 class window.BaseShadow
 
   # Create a new shadow, with all properties reseted.
@@ -9,7 +9,8 @@ class window.BaseShadow
     @_reset_properties()
   
   
-  # Get HTML code for a part of the UI setup (the UI to tweak the shadow).
+  # Get HTML code for a part of the UI setup (the UI to tweak the
+  # shadow).
   #
   # label         - String name of the property displayed to the user.
   # property      - String name of the shadow property to tweak (usually
@@ -27,7 +28,8 @@ class window.BaseShadow
      <div id='slider_#{property}' class='yellow'></div>"
   
   
-  # Get HTML code for the sublayer checkbox (a special case of #setup_part).
+  # Get HTML code for the sublayer checkbox (a special case of
+  # #setup_part).
   #
   # Returns String.
   setup_part_sublayer: ->
@@ -89,4 +91,4 @@ class window.BaseShadow
      transform-origin: #{value};\n"
   
   sass_code_for_transform_origin: (value) ->
-    "transform-origin: #{value};\n"
+    "transform-origin: #{value}\n"
