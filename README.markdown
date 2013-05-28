@@ -1,16 +1,35 @@
-Welcome to CSS3 Drop Shadows
+CSS3 Drop Shadow Generator
 ============================
 
-A web application to build nice CSS3 box shadows.
+A Rails/Coffeescript application to build nice and original CSS3 box shadows.
 
+Usage
+--------------------------
 
-Contribute
------------
+See it [online](http://css3-drop-shadows.herokuapp.com/).
 
-Feel free to contribute to the code. I wrote this app to learn coffeescript so
-I'm sure you can improve my code... To contribute, fork me and please make a
-git branch. And as I did not have any tests for coffeescript (shame on me ;) be sure
-to widely document all your methods.
+Dependencies
+--------------------------
+
+  * ruby >= 1.9.2
+  * rails >= 3.1
+
+Contributing
+-------------------------
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
+
+### There is many other ways to contibute to CSS3 Drop Shadow Generator
+
+1. Report any bug
+2. Give me ideas
+3. Correct my poor english syntax
+4. Blog about it
+5. Tell it to your friends and colleagues
 
 License
 --------------------------
@@ -21,4 +40,4 @@ Questions and/or Comments
 --------------------------
 
 Feel free to email [Xavier Nayrac](mailto:xavier.nayrac@gmail.com)
-with any questions.
+with any questions, or contact me on [twitter](https://twitter.com/lkdjiin).
