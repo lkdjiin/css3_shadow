@@ -8,7 +8,7 @@ module ApplicationHelper
     pages = {
       "home" => root_path,
       "app" => app_path,
-      "comments" => comments_path,
+      "comments" => comments_path(anchor: "disqus_thread"),
       "about" => about_path
     }
     pages.map do |key, value|
