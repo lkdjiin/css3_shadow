@@ -23,7 +23,7 @@ Contributing
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
-### There is many other ways to contibute to CSS3 Drop Shadow Generator
+### There is many other ways to contribute to CSS3 Drop Shadow Generator
 
 1. Report any bug
 2. Give me ideas
