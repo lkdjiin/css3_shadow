@@ -1,11 +1,10 @@
-%select{id: "shape", onchange: "window.maker.shape_changed()"}
-  %option{value: "basic"} Basic
-  %option{value: "curled"} Curled corners
-  %option{value: "curved_hz", selected: "selected"} Horizontal curve
-  %option{value: "curved_hz_bottom"} Horizontal curve (bottom only)
-  %option{value: "curved_hz_top"} Horizontal curve (top only)
-  %option{value: "perspective"} Left perspective
-  %option{value: "perspective_r"} Right perspective
-  %option{value: "curved_vt"} Vertical curve
-  %option{value: "see_through_tape"} See through tape
-  %option{value: "wrinkled"} Wrinkled
+= shadow_tag "basic"
+= shadow_tag "curled"
+= shadow_tag "curved_hz"
+= shadow_tag "curved_hz_bottom"
+= shadow_tag "curved_hz_top"
+= shadow_tag "perspective"
+= shadow_tag "perspective_r"
+= shadow_tag "curved_vt"
+= shadow_tag "see_through_tape"
+= shadow_tag "wrinkled"
