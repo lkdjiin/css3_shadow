@@ -1,10 +1,5 @@
-= shadow_tag "basic"
-= shadow_tag "curled"
-= shadow_tag "curved_hz"
-= shadow_tag "curved_hz_bottom"
-= shadow_tag "curved_hz_top"
-= shadow_tag "perspective"
-= shadow_tag "perspective_r"
-= shadow_tag "curved_vt"
-= shadow_tag "see_through_tape"
-= shadow_tag "wrinkled"
+- shadow_types.each do |s|
+  .shadow-thumb{onclick: "window.maker.shape_changed('#{s[0]}')"}
+    = shadow_tag(s[0])
+    .mask
+      %p= s[1]
