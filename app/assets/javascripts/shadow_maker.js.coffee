@@ -43,10 +43,9 @@ class window.ShadowMaker
   # Performs some transition animation too.
   #
   # TODO Find a solution to not open this class when adding a new type of shadow.
-  # FIXME transition animation doesn't work.
   shape_changed: (type) ->
     $('#code pre code').html('')
-    $('#setup_shadow').animate({opacity: 0}, 300, 'linear', =>
+    $('#box_outer').animate({opacity: 0}, 200, 'linear', =>
       @maker = switch type
         when 'curved_hz' then new window.HorizontalCurveShadow('both')
         when 'curved_hz_bottom' then new window.HorizontalCurveShadow('bottom')
@@ -58,7 +57,7 @@ class window.ShadowMaker
         when 'basic' then new window.BasicShadow()
         when 'wrinkled' then new window.WrinkledShadow()
         when 'see_through_tape' then new window.SeeThroughTapeShadow()
-      $('#setup_shadow').animate({opacity: 1})
+      $('#box_outer').animate({opacity: 1}, 200)
     )
 
 
