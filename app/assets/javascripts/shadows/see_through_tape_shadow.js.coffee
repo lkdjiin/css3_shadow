@@ -202,7 +202,7 @@ class window.SeeThroughTapeShadow extends window.BaseShadow
   code_for_box_after: ->
     tmp = @_transform_for_after()
     tr = @css_code_for_transform(tmp)
-    ".box:before {\n
+    ".box:after {\n
     position: absolute;\n
     content: \"\";\n
     right: 0;\n
