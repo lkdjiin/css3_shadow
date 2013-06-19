@@ -1,8 +1,10 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.12'
-gem 'jquery-rails'
-gem 'haml', '3.1.3'
+gem 'rails', '3.2.13'
+# This version of jquery-rails contains jquery-ui. Greater versions have
+# removed that.
+gem 'jquery-rails', '2.3.0'
+gem 'haml-rails'
 gem 'thin'
 
 group :production do
@@ -11,7 +13,7 @@ end
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'rspec-rails', '2.7.0'
+  gem 'rspec-rails', '2.8.1'
   gem "jasminerice", :git => 'https://github.com/bradphelan/jasminerice.git'
 end
 
@@ -26,8 +28,8 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.1.5'
-  gem 'coffee-rails', '~> 3.1.1'
+  gem 'sass-rails',   '~> 3.2'
+  gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
 
