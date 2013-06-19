@@ -5,3 +5,4 @@
 # spec/javascripts/*_spec.js.erb
 #
 #=require_tree ./
+#= require ../../app/assets/javascripts/application

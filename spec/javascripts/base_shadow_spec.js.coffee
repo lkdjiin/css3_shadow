@@ -1,4 +1,3 @@
-#= require ../../app/assets/javascripts/base_shadow
 
 describe "BaseShadow", ->
   beforeEach ->
