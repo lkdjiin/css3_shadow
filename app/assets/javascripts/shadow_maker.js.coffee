@@ -53,6 +53,7 @@ class window.ShadowMaker
         when 'perspective' then new window.PerspectiveShadow('left')
         when 'curled' then new window.CurledCornersShadow()
         when 'perspective_r' then new window.PerspectiveShadow('right')
+        when 'pile' then new window.PileShadow()
         when 'curved_vt' then new window.VerticalCurveShadow()
         when 'basic' then new window.BasicShadow()
         when 'wrinkled' then new window.WrinkledShadow()

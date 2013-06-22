@@ -1,11 +1,11 @@
-################################################################################
+########################################################################
 # Representing the state of a curled corners Shadow.
-################################################################################
+########################################################################
 class window.CurledCornersShadow extends window.BaseShadow
 
   constructor: ->
     super()
-    
+
     @bottom = 15
     @left = 10
     @right = 10
@@ -16,64 +16,64 @@ class window.CurledCornersShadow extends window.BaseShadow
     @opacity = 0.7
     @rotate = 3
     @skew = 0
-    
+
     @init()
     window.box_tweaking.set_radius(0,0,25,25,0,0,3,3)
-  
+
   # value - Integer.
   set_bottom: (value) ->
     @bottom = value
     window.sheet_mgr.set SSC.BEFORE, "bottom", "#{value}px"
     window.sheet_mgr.set SSC.AFTER, "bottom", "#{value}px"
-  
+
   # value - Integer.
   set_distance: (value) ->
     @left = @right = value
     window.sheet_mgr.set SSC.BEFORE, "left", "#{value}px"
     window.sheet_mgr.set SSC.AFTER, "right", "#{value}px"
-  
+
   # value - Integer.
   set_width: (value) ->
     @width = value
     window.sheet_mgr.set SSC.BEFORE, "width", "#{value}%"
     window.sheet_mgr.set SSC.AFTER, "width", "#{value}%"
-  
+
   # value - Integer.
   set_height: (value) ->
     @height = value
     window.sheet_mgr.set SSC.BEFORE, "height", "#{value}%"
     window.sheet_mgr.set SSC.AFTER, "height", "#{value}%"
-  
+
   # value - Integer.
   set_yshift: (value) ->
     @yshift = value
     window.sheet_mgr.set SSC.BEFORE, SSC.BOX_SHADOW, @_color_for_before()
     window.sheet_mgr.set SSC.AFTER, SSC.BOX_SHADOW, @_color_for_after()
-  
+
   # value - Integer.
   set_blur: (value) ->
     @blur = value
     window.sheet_mgr.set SSC.BEFORE, SSC.BOX_SHADOW, @_color_for_before()
     window.sheet_mgr.set SSC.AFTER, SSC.BOX_SHADOW, @_color_for_after()
-  
+
   # value - Integer.
   set_opacity: (value) ->
     @opacity = value / 100
     window.sheet_mgr.set SSC.BEFORE, SSC.BOX_SHADOW, @_color_for_before()
     window.sheet_mgr.set SSC.AFTER, SSC.BOX_SHADOW, @_color_for_after()
-  
+
   # value - Integer.
   set_rotate: (value) ->
     @rotate = value
     window.sheet_mgr.set SSC.BEFORE, SSC.TRANSFORM, "rotate(-#{value}deg) skew(-#{@skew}deg)"
     window.sheet_mgr.set SSC.AFTER, SSC.TRANSFORM, "rotate(#{value}deg) skew(#{@skew}deg)"
-  
+
   # value - Integer.
   set_skew: (value) ->
     @skew = value
     window.sheet_mgr.set SSC.BEFORE, SSC.TRANSFORM, "rotate(-#{@rotate}deg) skew(-#{@skew}deg)"
     window.sheet_mgr.set SSC.AFTER, SSC.TRANSFORM, "rotate(#{@rotate}deg) skew(#{@skew}deg)"
-    
+
   # Set the UI (sliders, etc.) to tweak the shadow.
   _setup_shadow_part: ->
     (@setup_part_sublayer() +
@@ -86,7 +86,7 @@ class window.CurledCornersShadow extends window.BaseShadow
     @setup_part("Color opacity", "opacity", @opacity) +
     @setup_part("Rotate", "rotate", @rotate, 'deg') +
     @setup_part("Skew", "skew", @skew, 'deg'))
-    
+
   # Set callback methods (mostly on sliders) to know what to do when values
   # changed.
   _set_callbacks: ->
@@ -99,7 +99,7 @@ class window.CurledCornersShadow extends window.BaseShadow
     @set_slider_callback("opacity", 0, 100, @opacity * 100)
     @set_slider_callback("rotate", 0, 30, @rotate)
     @set_slider_callback("skew", 0, 50, @skew)
-  
+
   # Display a shadow on the box with default values.
   _display_default_shadow: ->
     window.sheet_mgr.delete_rules()

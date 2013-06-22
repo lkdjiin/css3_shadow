@@ -8,6 +8,7 @@ module PagesHelper
       [ "curved_hz_top", "Curved horizontal (top only)" ],
       [ "perspective", "Left perspective" ],
       [ "perspective_r", "Right perspective" ],
+      [ "pile", "Pile" ],
       [ "curved_vt", "Curved vertical" ],
       [ "see_through_tape", "See through tape" ],
       [ "wrinkled", "Wrinkled" ]
