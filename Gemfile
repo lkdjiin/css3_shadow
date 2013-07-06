@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
-ruby '1.9.3'
+ruby '2.0.0'
 
 gem 'rails', '3.2.13'
 # This version of jquery-rails contains jquery-ui. Greater versions have
