@@ -7,6 +7,7 @@ gem 'rails', '3.2.13'
 gem 'jquery-rails', '2.3.0'
 gem 'haml-rails'
 gem 'thin'
+gem 'newrelic_rpm'
 
 group :production do
   gem 'pg'
